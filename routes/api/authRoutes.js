@@ -9,6 +9,19 @@ const User = require('../../models/User');
 
 const router = express.Router();
 
+//@route    GET api/auth
+//@desc     Get user authentication route
+//@access   Public
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ errors: [{ msg: 'Invalid Credentials' }] });
+  }
+});
+
 //@route    POST api/auth
 //@desc     Login user route
 //@access   Public
