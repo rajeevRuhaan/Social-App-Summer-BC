@@ -1,6 +1,17 @@
 //General styles
-@import './styles/custom';
-@import './styles/variables';
+@import "./styles/custom";
+@import "./styles/variables";
 
 //Components
-@import './components/Navbar/navbar';
+@import "./components/Header/Navigation/navbar";
+@import "./components/Main/main";
+@import "./components/Foooter/footer";
+
+// Pages
+
+@import "./Pages/Home/home";
+@import "./Pages/Profile/profile";
+
+// Bootstrap Scss
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
