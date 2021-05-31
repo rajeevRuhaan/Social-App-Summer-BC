@@ -1,6 +1,9 @@
 //General styles
-@import './styles/custom';
-@import './styles/variables';
+@import "./styles/custom";
+@import "./styles/variables";
 
 //Components
-@import './components/Navbar/navbar';
+@import "./components/Navbar/navbar";
+@import "./components/footer/footer";
+@import "./pages/register";
+@import "./components/main/main";
