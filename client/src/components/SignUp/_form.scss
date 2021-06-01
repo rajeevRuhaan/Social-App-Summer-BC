@@ -1,0 +1,44 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.signupform {
+  display: grid;
+  padding: 100px 40px;
+  background-color: white;
+  box-shadow: 0 0 1.5rem rgba(105, 105, 105, 0.5);
+  border-radius: 4px;
+  margin-bottom: 30px;
+  width: 24rem;
+  height: 100%;
+  margin-left: 65%;
+  margin-top: -6px;
+  row-gap: 20px;
+}
+
+.baseForm {
+  display: grid;
+  row-gap: 10px;
+}
+
+input {
+  height: 30px;
+}
+button {
+  display: grid;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  padding: 1rem;
+  width: 50%;
+}
+button:hover {
+  background-color: #ee4022; /* Green */
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
