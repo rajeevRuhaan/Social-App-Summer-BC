@@ -1,25 +1,25 @@
-const express = require('express');
-const { check, validationResult } = require('express-validator');
-const gravatar = require('gravatar');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('config');
+const express = require("express");
+const { check, validationResult } = require("express-validator");
+const gravatar = require("gravatar");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const router = express.Router();
 
 //get users from database
-const User = require('../../models/User');
+const User = require("../../models/User");
 
 //@route    POST api/users
 //@desc     Register user route
 //@access   Public
 router.post(
-  '/',
+  "/",
   [
-    check('name', 'Name is required').not().isEmpty(),
-    check('email', 'Please include a valid email').isEmail(),
+    check("name", "Name is required").not().isEmpty(),
+    check("email", "Please include a valid email").isEmail(),
     check(
-      'password',
-      'Please enter a password with at least 6 characters'
+      "password",
+      "Please enter a password with at least 6 characters"
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
@@ -33,19 +33,19 @@ router.post(
     try {
       //1)) See if user exists
       let user = await User.findOne({ email }).collation({
-        locale: 'en',
+        locale: "en",
         strength: 2,
       });
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User already exists' }] });
+          .json({ errors: [{ msg: "User already exists" }] });
       }
       //2)) Get users gravatar
       const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm',
+        s: "200",
+        r: "pg",
+        d: "mm",
       });
       //create new user
       user = new User({
@@ -65,7 +65,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.get("jwtSecret"),
         { expiresIn: 360000 },
         (error, token) => {
           if (error) throw error;
@@ -74,7 +74,7 @@ router.post(
       );
     } catch (error) {
       console.log(error.message);
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 );

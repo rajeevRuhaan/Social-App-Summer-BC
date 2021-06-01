@@ -7,17 +7,20 @@ import * as Yup from "yup";
 
 const Register = () => {
   const [data, setData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
   });
+
   const changeData = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   console.log(data);
   /*****validation***/
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Full name is required"),
+    firstname: Yup.string().required("First name is required"),
+    lastname: Yup.string().required("LAst name is required"),
     email: Yup.string().required("Email is required").email("Email is invalid"),
     password: Yup.string()
       .required("Password is required")
@@ -34,12 +37,13 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(validationSchema) });
-  console.log(register);
-  console.log(handleSubmit);
+  //   console.log(register);
+  //   console.log(handleSubmit);
 
   const submitData = (e) => {
     e.preventDefault();
-    axios.post("api/user", data);
+    console.log(e);
+    // axios.post("api/user", data);
     e.target.reset();
   };
 
@@ -48,32 +52,34 @@ const Register = () => {
       <Form onSubmit={handleSubmit(submitData)} className="form">
         <h2>Registration</h2>
         <Form.Group>
-          <Form.Label htmlFor="">Full Name</Form.Label>
+          <Form.Label htmlFor="">First Name</Form.Label>
           <Form.Control
             type="text"
-            name="name"
-            {...register("name")}
-            // className={`form-control ${errors.fullname ? "is-invalid" : ""}`}
+            name="firstname"
+            {...register("firstname")}
+            className={`form-control ${errors.firstname ? "is-invalid" : ""}`}
             onChange={changeData}
             required
           />
         </Form.Group>
-        {/* <Form.Group>
+        <Form.Group>
           <Form.Label htmlFor="">Last Name</Form.Label>
           <Form.Control
             type="text"
             name="lastname"
+            {...register("lastname")}
+            className={`form-control ${errors.lastname ? "is-invalid" : ""}`}
             onChange={changeData}
             required
           />
-        </Form.Group> */}
+        </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="">E-mail</Form.Label>
           <Form.Control
             type="text"
             name="email"
             {...register("email")}
-            // className={`form-control ${errors.email ? "is-invalid" : ""}`}
+            className={`form-control ${errors.email ? "is-invalid" : ""}`}
             onChange={changeData}
             required
           />
@@ -84,12 +90,12 @@ const Register = () => {
             type="password"
             name="password"
             {...register("password")}
-            className={`${errors.password ? "is-invalid" : ""}`}
+            className={`form-control ${errors.password ? "is-invalid" : ""}`}
             onChange={changeData}
             required
           />
         </Form.Group>
-        {/* <Form.Group>
+        <Form.Group>
           <Form.Label htmlFor="">Confirm Password</Form.Label>
           <Form.Control
             type="password"
@@ -97,7 +103,7 @@ const Register = () => {
             onChange={changeData}
             required
           />
-        </Form.Group> */}
+        </Form.Group>
 
         <div>
           <Button
