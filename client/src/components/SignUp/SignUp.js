@@ -23,12 +23,10 @@ const SignupForm = () => {
         <p>
           Already have an account? <a href="/login">Sign in</a>
         </p>
-        <>
-          {" "}
-          <h3>Sign up form</h3>
-          <p>Register to create user account</p>
-          <p>* are required field</p>
-        </>
+        <h3>Sign up form</h3>
+        <p>Register to create user account</p>
+        <p>* are required field</p>
+
         <FormGroup className="baseForm">
           <label htmlFor="name">Name*</label>
           <Field name="name" type="text" placeholder="Ex: John Deo" />
