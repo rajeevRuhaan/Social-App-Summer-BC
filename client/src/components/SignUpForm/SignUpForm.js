@@ -21,7 +21,8 @@ const SignUpForm = () => {
           .required('Required'),
         confirmPassword: Yup.string()
           .min(6, 'Password must be 6 characters or more')
-          .required('Required'),
+          .required('Required')
+          .oneOf([Yup.ref('password'), null], 'Passwords must match'),
       })}
       onSubmit={(values, { setSubmitting }) => {
         dispatch(register(values));
