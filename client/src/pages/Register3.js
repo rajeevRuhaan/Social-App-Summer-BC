@@ -146,18 +146,6 @@ const Register3 = () => {
           </div>
         </form>
       </div>
-      <div className="console">
-        <header className="baseFormHeader">
-          <p className="baseFormHeading">Form Submission Output</p>
-          {submitCount > 0 && <pre>{JSON.stringify(values, null, 2)}</pre>}
-        </header>
-      </div>
-      <div className="console">
-        <header className="baseFormHeader">
-          <p className="baseFormHeading">Errors</p>
-          {<pre>{JSON.stringify(errors, null, 2)}</pre>}
-        </header>
-      </div>
     </>
   );
 };
