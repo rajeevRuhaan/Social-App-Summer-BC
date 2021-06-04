@@ -2,18 +2,21 @@ import React from 'react';
 import { Jumbotron, Button } from 'react-bootstrap';
 
 
-const HeroBanner = ({ imageSrc }) => {
+const HeroBanner = ({ imageSrc, quote, name, title }) => {
     return (
-        <Jumbotron className="hero-banner">
-            <h1>Hello, world!</h1>
-            <p>
-                This is a simple hero unit, a simple jumbotron-style component for calling
-                extra attention to featured content or information.
-                </p>
-            <p>
-                <Button variant="primary">Learn more</Button>
-            </p>
-        </Jumbotron>
+        <div className="hero-banner">
+            <div class="hero-banner-bg">
+                <img src={imageSrc} alt={name} className="hero-banner-bg-img" />
+            </div>
+            <div className="hero-banner-content">
+                <div className="hero-banner-quote">
+                    <span>"</span>{quote}
+                </div>
+                <div className="hero-banner-name">
+                    {name} <span>{title}</span>
+                </div>
+            </div>
+        </div>
     );
 };
 
