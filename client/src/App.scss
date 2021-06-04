@@ -1,18 +1,18 @@
 //bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 //fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 //General styles
 @import "./styles/custom";
 @import "./styles/variables";
 
 //Components
-@import './components/Navbar/navbar';
-@import './components/SignInForm/signin';
-@import './components/SignUpForm/sign-up';
+// @import "./components/Navbar/";
+@import "./components/SignInForm/signin";
+@import "./components/SignUpForm/sign-up";
 
 //pages
-@import './pages/SignInPage/sign-in-page';
-@import './pages/SignUpPage/sign-up-page';
+@import "./pages/SignInPage/sign-in-page";
+@import "./pages/SignUpPage/sign-up-page";
