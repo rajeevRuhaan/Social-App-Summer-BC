@@ -21,14 +21,14 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Container>
-          <Switch>
-            <Route exact path='/' component={SignInPage} />
-            <Route exact path='/register' component={SignUpPage} />
-            <Route exact path='/home' component={HomePage} />
-            <PrivateRoute exact path='/dashboard' component={DashboardPage} />
-          </Switch>
-        </Container>
+        {/* <Container> */}
+        <Switch>
+          <Route exact path='/' component={SignInPage} />
+          <Route exact path='/register' component={SignUpPage} />
+          <Route exact path='/home' component={HomePage} />
+          <PrivateRoute exact path='/dashboard' component={DashboardPage} />
+        </Switch>
+        {/* </Container> */}
       </Router>
     </Provider>
   );
