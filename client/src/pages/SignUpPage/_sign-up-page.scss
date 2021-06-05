@@ -1,11 +1,31 @@
 .sign-up-page {
+  display: flex !important;
   min-height: 100vh;
+  flex-direction: row;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 
-  .sign-in__link {
-    text-align: right;
-    margin-bottom: 4rem;
+  .col-sm-6 {
+    padding: 0 !important;
+  }
+
+  .navbar {
+    margin: 2rem 5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bolder;
+      color: white !important;
+      text-transform: uppercase;
+    }
   }
 }

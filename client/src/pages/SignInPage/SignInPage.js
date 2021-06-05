@@ -1,12 +1,16 @@
 import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import HeroBanner from '../../components/Main/HeroBanner/HeroBanner';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 
 import SignInForm from '../../components/SignInForm/SignInForm';
 import Alert from '../../components/Alert/Alert';
+import { Navbar, Container } from 'react-bootstrap';
+import heroImage from "../../Assets/bg-img-1.jpg";
 
 const SignInPage = () => {
   const { isAuthenticated, loading } = useSelector((state) => state.auth);
@@ -19,12 +23,20 @@ const SignInPage = () => {
   return (
     <Fragment>
       <Row className='sign-in-page'>
-        <Col sm={6}>Hero Banner</Col>
-        <Col sm={6}>
+        <Navbar fixed="top" className="navbar">
+          <Navbar.Brand className="logo" href="/">DevNet</Navbar.Brand>
+          {/* <Navbar.Toggle /> */}
+          <Navbar.Collapse className="justify-content-end">
+            <div className='sign-up__link'>
+              Dont have an account? <Link to='/register'>Get Started</Link>
+            </div>
+          </Navbar.Collapse>
+        </Navbar>
+        <Col sm={6} className="banner-area">
+          <HeroBanner imageSrc={heroImage} quote="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" name="Johnathon Doe" title="UI Developer" />
+        </Col>
+        <Col sm={6} className="form-area">
           <Alert />
-          <div className='sign-up__link'>
-            Dont have an account? <Link to='/register'>Get Started</Link>
-          </div>
           <SignInForm />
         </Col>
       </Row>
