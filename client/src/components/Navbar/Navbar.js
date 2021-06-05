@@ -12,7 +12,13 @@ const CustomNavbar = () => {
   const history = useHistory();
 
   return (
-    <Navbar collapseOnSelect bg='light' expand='lg' fixed='top'>
+    <Navbar
+      className='shadow'
+      collapseOnSelect
+      bg='light'
+      expand='lg'
+      fixed='top'
+    >
       <Container>
         <LinkContainer to='/home'>
           <Navbar.Brand>DevNet</Navbar.Brand>

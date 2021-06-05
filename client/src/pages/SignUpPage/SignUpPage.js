@@ -8,9 +8,9 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import Alert from '../../components/Alert/Alert';
 
 const SignUpPage = () => {
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, user } = useSelector((state) => state.auth);
   //redirect user to dashboard page if user logged in successfully
-  if (isAuthenticated && !loading) {
+  if (isAuthenticated && !loading && user) {
     return <Redirect to='/home' />;
   }
 

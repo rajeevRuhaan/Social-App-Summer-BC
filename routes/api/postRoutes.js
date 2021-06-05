@@ -28,6 +28,7 @@ router.post(
       };
       const post = new Post(newPost);
       await post.save();
+      res.json(post);
     } catch (error) {
       console.error(error.message);
       res.status(500).json('Server Error');
