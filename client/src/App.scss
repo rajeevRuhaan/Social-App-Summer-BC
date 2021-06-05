@@ -9,11 +9,12 @@
 @import './styles/variables';
 
 //Components
-@import './components/Navbar/navbar';
-@import './components/SignInForm/signin';
-@import './components/SignUpForm/sign-up';
+
+@import './components/SignInForm/sign-in-form';
+@import './components/SignUpForm/sign-up-form';
+@import './components/Main/HeroBanner/heroBanner';
+@import './components/Alert/alert';
 
 //pages
 @import './pages/SignInPage/sign-in-page';
 @import './pages/SignUpPage/sign-up-page';
-@import './pages/HomePage/homepage';

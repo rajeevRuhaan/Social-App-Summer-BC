@@ -30,7 +30,7 @@ const SignUpForm = () => {
       }}
     >
       <Form className='sign-up-form'>
-        <h3>Register Individual Account!</h3>
+        <h3>Register Account!</h3>
         <small className='text-muted'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, eius.
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, eius.
@@ -64,7 +64,7 @@ const SignUpForm = () => {
           />
         </FormGroup>
         <Button type='submit' variant='primary' className='d-block w-100'>
-          Register Account
+          Register
         </Button>
       </Form>
     </Formik>
