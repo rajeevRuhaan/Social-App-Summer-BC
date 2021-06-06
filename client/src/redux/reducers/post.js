@@ -1,8 +1,17 @@
-import { ADD_POST, POST_ERROR } from '../actions/types';
+import {
+  ADD_COMMENT,
+  ADD_POST,
+  GET_POSTS,
+  GET_USER_POST,
+  POST_ERROR,
+  TOGGLE_COMMENTS,
+  UPDATE_LIKE,
+} from '../actions/types';
 
 const intialState = {
   posts: [],
   post: null,
+  currentUserPosts: [],
   loading: true,
   error: {},
 };
@@ -14,15 +23,57 @@ const postReducer = (state = intialState, action) => {
     case ADD_POST:
       return {
         ...state,
-        post: payload,
         posts: [payload, ...state.posts],
         loading: false,
+      };
+
+    case GET_POSTS:
+      return {
+        ...state,
+        posts: payload,
+        loading: false,
+      };
+
+    case GET_USER_POST:
+      return {
+        ...state,
+        currentUserPosts: payload,
+        loading: false,
+      };
+
+    case UPDATE_LIKE:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === payload.postId ? { ...post, likes: payload.likes } : post
+        ),
+        loading: false,
+      };
+
+    case ADD_COMMENT:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === payload.postId
+            ? { ...post, comments: payload.comments }
+            : post
+        ),
+      };
+
+    case TOGGLE_COMMENTS:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === payload
+            ? { ...post, toggleComments: !post.toggleComments }
+            : post
+        ),
       };
 
     case POST_ERROR:
       return {
         ...state,
-        post: null,
+        error: payload,
         loading: false,
       };
 

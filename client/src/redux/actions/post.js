@@ -1,7 +1,15 @@
 import axios from 'axios';
-import { ADD_POST, POST_ERROR } from './types';
-import { setAlert } from './alert';
+import {
+  ADD_POST,
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKE,
+  GET_USER_POST,
+  ADD_COMMENT,
+  TOGGLE_COMMENTS,
+} from './types';
 
+//Add post
 export const addPost = (formData) => async (dispatch) => {
   try {
     const config = {
@@ -15,12 +23,120 @@ export const addPost = (formData) => async (dispatch) => {
 
     dispatch({ type: ADD_POST, payload: res.data });
   } catch (error) {
-    const errors = error.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
     dispatch({
       type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
+
+//Get all posts
+export const getPosts = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/posts');
+
+    dispatch({
+      type: GET_POSTS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//Get current User Posts
+export const getCurrentUserPosts = (userId) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/users/${userId}`);
+    dispatch({
+      type: GET_USER_POST,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//Add like
+export const addLike = (postId) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/posts/like/${postId}`);
+
+    dispatch({
+      type: UPDATE_LIKE,
+      payload: { postId, likes: res.data },
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//remove like
+export const removeLike = (postId) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/posts/unlike/${postId}`);
+
+    dispatch({
+      type: UPDATE_LIKE,
+      payload: { postId, likes: res.data },
+    });
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//Add comment
+export const addComment = (postId, formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const body = JSON.stringify(formData);
+    const res = await axios.post(`/api/posts/comment/${postId}`, body, config);
+
+    dispatch({ type: ADD_COMMENT, payload: { postId, comments: res.data } });
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//Toggle comments
+export const toggleCommentsForm = (postId) => ({
+  type: TOGGLE_COMMENTS,
+  payload: postId,
+});

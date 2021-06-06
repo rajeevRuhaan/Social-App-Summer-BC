@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
@@ -8,25 +7,30 @@ import Spinner from '../../components/Spinner/Spinner';
 import UserBox from '../../components/UserBox/UserBox';
 import CreatePostBox from '../../components/CreatPostBox/CreatePostBox';
 
-const HomePage = () => {
-  const { loading } = useSelector((state) => state.auth);
+import Posts from '../../components/Posts/Posts';
 
-  return loading ? (
-    <Spinner />
-  ) : (
+const HomePage = () => {
+  const auth = useSelector((state) => state.auth);
+  const post = useSelector((state) => state.post);
+  const profile = useSelector((state) => state.profile);
+
+  return auth.user && post.posts && profile.profile ? (
     <Fragment>
       <CustomNavbar />
       <section className='homepage-content'>
-        <Row>
+        <Row className='px-5'>
           <Col xs={4}>
             <UserBox />
           </Col>
           <Col xs={8}>
             <CreatePostBox />
+            <Posts />
           </Col>
         </Row>
       </section>
     </Fragment>
+  ) : (
+    <Spinner />
   );
 };
 

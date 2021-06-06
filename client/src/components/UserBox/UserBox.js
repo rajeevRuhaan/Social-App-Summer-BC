@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,10 +10,11 @@ import measureProgress from '../../redux/utils/measureProgress';
 
 const UserBox = () => {
   const {
-    user: { name, avatar },
+    user: { name, avatar, _id },
   } = useSelector((state) => state.auth);
 
   const { profile } = useSelector((state) => state.profile);
+  const { currentUserPosts } = useSelector((state) => state.post);
 
   //Check if there is a user profile
   let status,
@@ -42,10 +44,14 @@ const UserBox = () => {
     <Card className='shadow-sm p-3'>
       <Row>
         <Col sm={4}>
-          <Image roundedCircle src={avatar} />
+          <Link to={`/profile/${_id}`}>
+            <Image roundedCircle src={avatar} />
+          </Link>
         </Col>
         <Col sm={8}>
-          <Card.Title>{name}</Card.Title>
+          <Link to={`/profile/${_id}`}>
+            <Card.Title>{name}</Card.Title>
+          </Link>
           <p className='text-muted'>{status}</p>
         </Col>
       </Row>
@@ -82,11 +88,9 @@ const UserBox = () => {
           education,
         ])}
       />
+
       <p>
-        Your Connection: <span>100</span>{' '}
-      </p>
-      <p>
-        Total Posts: <span>10</span>{' '}
+        Total Posts: <span>{currentUserPosts.length}</span>{' '}
       </p>
     </Card>
   );

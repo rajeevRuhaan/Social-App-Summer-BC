@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { addPost } from '../../redux/actions/post';
 
 const CreatePostBox = () => {
   const {
-    user: { avatar },
+    user: { avatar, _id },
   } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const CreatePostBox = () => {
     <Card className='shadow-sm p-3'>
       <Row>
         <Col xs={2}>
-          <Image roundedCircle src={avatar} />
+          <Link to={`/profile/${_id}`}>
+            <Image roundedCircle src={avatar} />
+          </Link>
         </Col>
         <Col xs={10}>
           <Formik
@@ -44,7 +47,7 @@ const CreatePostBox = () => {
                 className='form-control'
                 placeholder="What's in your mind?"
               />
-              <ErrorMessage component='div' className='error' name='post' />
+
               <Button type='submit' variant='primary' className='ml-auto'>
                 Create Post
               </Button>
