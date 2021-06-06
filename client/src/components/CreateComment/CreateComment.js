@@ -7,7 +7,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { addComment } from '../../redux/actions/post';
 
-const CreateComment = ({ id }) => {
+const CreateComment = ({ postId }) => {
   const {
     user: { avatar },
   } = useSelector((state) => state.auth);
@@ -25,9 +25,10 @@ const CreateComment = ({ id }) => {
           validationSchema={Yup.object({
             text: Yup.string().required('Required'),
           })}
-          onSubmit={(values, { setSubmitting, resetForm }) => {
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
             //create a comment
-            dispatch(addComment(id, values));
+            await dispatch(addComment(postId, values));
+
             setSubmitting(false);
             //clear form
             resetForm();

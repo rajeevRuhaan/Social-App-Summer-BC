@@ -47,6 +47,9 @@ const postReducer = (state = intialState, action) => {
         posts: state.posts.map((post) =>
           post._id === payload.postId ? { ...post, likes: payload.likes } : post
         ),
+        currentUserPosts: state.currentUserPosts.map((post) =>
+          post._id === payload.postId ? { ...post, likes: payload.likes } : post
+        ),
         loading: false,
       };
 
@@ -58,12 +61,22 @@ const postReducer = (state = intialState, action) => {
             ? { ...post, comments: payload.comments }
             : post
         ),
+        currentUserPosts: state.currentUserPosts.map((post) =>
+          post._id === payload.postId
+            ? { ...post, comments: payload.comments }
+            : post
+        ),
       };
 
     case TOGGLE_COMMENTS:
       return {
         ...state,
         posts: state.posts.map((post) =>
+          post._id === payload
+            ? { ...post, toggleComments: !post.toggleComments }
+            : post
+        ),
+        currentUserPosts: state.currentUserPosts.map((post) =>
           post._id === payload
             ? { ...post, toggleComments: !post.toggleComments }
             : post

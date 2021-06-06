@@ -1,12 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
 import PostItem from '../PostItem/PostItem';
 
-const Posts = () => {
-  const post = useSelector((state) => state.post);
-
-  if (post.posts) {
-    const renderedPosts = post.posts.map((post) => (
+const Posts = ({ posts = [] }) => {
+  if (posts.length > 0) {
+    const renderedPosts = posts.map((post) => (
       <PostItem key={post._id} {...post} />
     ));
     return renderedPosts;

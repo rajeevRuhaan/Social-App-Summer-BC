@@ -114,7 +114,7 @@ const PostItem = ({
         <Col>
           {toggleComments ? (
             <Container>
-              <CreateComment id={_id} />
+              <CreateComment postId={_id} user={user} />
               <Comments comments={comments} />
             </Container>
           ) : null}

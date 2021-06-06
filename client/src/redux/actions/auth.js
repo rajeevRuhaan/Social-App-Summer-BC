@@ -1,8 +1,6 @@
 import axios from 'axios';
 import setTokenAuth from '../utils/setTokenAuth';
 import { setAlert } from './alert';
-import { getCurrentUserPosts, getPosts } from './post';
-import { getCurrentProfile } from './profile';
 import {
   LOAD_USER,
   AUTH_ERROR,
@@ -30,12 +28,6 @@ export const loadUser = () => async (dispatch) => {
         user: res.data,
       },
     });
-    //get current profile
-    await dispatch(getCurrentProfile());
-    //get current user Posts
-    await dispatch(getCurrentUserPosts(res.data._id));
-    //get all posts
-    await dispatch(getPosts());
   } catch (error) {
     dispatch({
       type: AUTH_ERROR,

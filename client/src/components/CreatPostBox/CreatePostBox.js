@@ -8,7 +8,8 @@ import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { addPost } from '../../redux/actions/post';
+import { addPost, getCurrentUserPosts } from '../../redux/actions/post';
+import { getCurrentProfile } from '../../redux/actions/profile';
 
 const CreatePostBox = () => {
   const {
@@ -31,9 +32,11 @@ const CreatePostBox = () => {
             validationSchema={Yup.object({
               text: Yup.string().required('Required'),
             })}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
               //create a post
-              dispatch(addPost(values));
+              await dispatch(addPost(values));
+
+              dispatch(getCurrentUserPosts(_id));
 
               setSubmitting(false);
               //clear form

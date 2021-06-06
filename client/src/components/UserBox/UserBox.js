@@ -5,19 +5,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { useSelector } from 'react-redux';
+
 import measureProgress from '../../redux/utils/measureProgress';
 
-const UserBox = () => {
-  const {
-    user: { name, avatar, _id },
-  } = useSelector((state) => state.auth);
-
-  const { profile } = useSelector((state) => state.profile);
-  const { currentUserPosts } = useSelector((state) => state.post);
-
+const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
   //Check if there is a user profile
-  let status,
+  const {
+    status,
     social,
     skills,
     company,
@@ -26,19 +20,10 @@ const UserBox = () => {
     bio,
     githubusername,
     experience,
-    education;
-  if (profile) {
-    status = profile.status;
-    social = profile.social;
-    skills = profile.skills;
-    company = profile.company;
-    website = profile.website;
-    location = profile.location;
-    bio = profile.bio;
-    githubusername = profile.githubusername;
-    experience = profile.experience;
-    education = profile.education;
-  }
+    education,
+  } = profile;
+
+  const { name, avatar, _id } = user;
 
   return (
     <Card className='shadow-sm p-3'>
@@ -90,7 +75,7 @@ const UserBox = () => {
       />
 
       <p>
-        Total Posts: <span>{currentUserPosts.length}</span>{' '}
+        Total Posts: <span>{posts.length}</span>{' '}
       </p>
     </Card>
   );
