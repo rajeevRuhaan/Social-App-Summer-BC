@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const router = express.Router();
 
-//get users model from database
+//get users from database
 const User = require('../../models/User');
 
 //@route    POST api/users
@@ -43,7 +43,7 @@ router.post(
       }
       //2)) Get users gravatar
       const avatar = gravatar.url(email, {
-        s: '50',
+        s: '200',
         r: 'pg',
         d: 'mm',
       });

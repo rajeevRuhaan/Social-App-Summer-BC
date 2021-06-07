@@ -28,7 +28,6 @@ router.post(
       };
       const post = new Post(newPost);
       await post.save();
-      res.json(post);
     } catch (error) {
       console.error(error.message);
       res.status(500).json('Server Error');
@@ -64,21 +63,6 @@ router.get('/:id', auth, async (req, res) => {
     if (error.kind == 'ObjectId') {
       return res.status(404).json({ msg: 'Post not found' });
     }
-    res.status(500).json('Server Error');
-  }
-});
-
-//@route    GET api/posts/users/:userId
-//@desc     Get posts by user Id
-//@access   Private
-router.get('/users/:userId', auth, async (req, res) => {
-  try {
-    const posts = await Post.find({ user: req.params.userId }).sort({
-      date: -1,
-    });
-    res.json(posts);
-  } catch (error) {
-    console.error(error.message);
     res.status(500).json('Server Error');
   }
 });
@@ -188,8 +172,6 @@ router.post(
         avatar: user.avatar,
         user: req.user.id,
       };
-
-      console.log(newComment);
 
       post.comments.unshift(newComment);
       await post.save();

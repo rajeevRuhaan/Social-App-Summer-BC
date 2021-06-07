@@ -22,7 +22,7 @@ const SignUpForm = () => {
         confirmPassword: Yup.string()
           .min(6, 'Password must be 6 characters or more')
           .required('Required')
-          .oneOf([Yup.ref('password')], 'Passwords must match'),
+          .oneOf([Yup.ref('password'), null], 'Passwords must match'),
       })}
       onSubmit={(values, { setSubmitting }) => {
         dispatch(register(values));
