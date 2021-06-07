@@ -7,6 +7,7 @@ import {
   GET_USER_POST,
   ADD_COMMENT,
   TOGGLE_COMMENTS,
+  CLEAR_POSTS,
 } from './types';
 
 //Add post
@@ -70,6 +71,9 @@ export const getCurrentUserPosts = (userId) => async (dispatch) => {
     });
   }
 };
+
+//clear Posts
+export const clearPosts = () => ({ type: CLEAR_POSTS });
 
 //Add like
 export const addLike = (postId) => async (dispatch) => {

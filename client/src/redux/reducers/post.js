@@ -1,6 +1,7 @@
 import {
   ADD_COMMENT,
   ADD_POST,
+  CLEAR_POSTS,
   GET_POSTS,
   GET_USER_POST,
   POST_ERROR,
@@ -40,6 +41,13 @@ const postReducer = (state = intialState, action) => {
         ...state,
         currentUserPosts: payload,
         loading: false,
+      };
+
+    case CLEAR_POSTS:
+      return {
+        ...state,
+        posts: null,
+        currentUserPosts: null,
       };
 
     case UPDATE_LIKE:
