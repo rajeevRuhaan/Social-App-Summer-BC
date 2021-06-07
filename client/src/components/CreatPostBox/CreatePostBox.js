@@ -35,11 +35,10 @@ const CreatePostBox = () => {
     const formData = new FormData();
     formData.append('photo', newPost.photo);
     formData.append('text', newPost.text);
-
-    console.log(formData);
-    console.log(newPost);
-
+    //send form
     dispatch(addPost(formData));
+    //clear form
+    setNewPost({ text: '', photo: '' });
   };
 
   return (
@@ -53,20 +52,25 @@ const CreatePostBox = () => {
         <Col xs={10}>
           <form onSubmit={handleSubmit} encType='multipart/form-data'>
             <input
+              className='form-control'
               type='text'
               placeholder='What is in your mind?'
               name='text'
               value={newPost.text}
               onChange={handleChange}
             />
-
-            <input
-              type='file'
-              accept='.png, .jpg, .jpeg'
-              name='photo'
-              onChange={handlePhoto}
-            />
-            <input type='submit' />
+            <div className='d-flex justify-content-between mt-3'>
+              <label className='photo-input--post'>
+                <input
+                  type='file'
+                  accept='.png, .jpg, .jpeg'
+                  name='photo'
+                  onChange={handlePhoto}
+                />
+                <i className='fas fa-image'></i> Photo
+              </label>
+              <Button type='submit'>Post</Button>
+            </div>
           </form>
         </Col>
       </Row>

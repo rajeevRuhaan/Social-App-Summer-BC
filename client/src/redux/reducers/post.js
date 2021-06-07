@@ -24,6 +24,7 @@ const postReducer = (state = intialState, action) => {
       return {
         ...state,
         posts: [payload, ...state.posts],
+        currentUserPosts: [payload, ...state.currentUserPosts],
         loading: false,
       };
 
