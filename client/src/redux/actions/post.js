@@ -15,12 +15,11 @@ export const addPost = (formData) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'form-data',
       },
     };
 
-    const body = JSON.stringify(formData);
-    const res = await axios.post('/api/posts/', body, config);
+    const res = await axios.post('/api/posts/', formData, config);
 
     dispatch({ type: ADD_POST, payload: res.data });
   } catch (error) {

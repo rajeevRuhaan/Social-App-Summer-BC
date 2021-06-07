@@ -1,40 +1,70 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
+const multer = require('multer');
 
 const Post = require('../../models/Post');
 const User = require('../../models/User');
 const Profie = require('../../models/Profile');
 const auth = require('../../middlewares/auth');
 
+//handle file uploads
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'client/public/assets/images/posts');
+  },
+  filename: (req, file, cb) => {
+    const extension = file.mimetype.split('/')[1];
+    cb(null, `post-${req.user.id}-${Date.now()}.${extension}`);
+  },
+});
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new Error('Not an image. Please upload only images.'), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
 //@route    POST api/posts
 //@desc     Create a post
 //@access   Private
-router.post(
-  '/',
-  [auth, [check('text', 'Text is required').not().isEmpty()]],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    try {
-      const user = await User.findById(req.user.id).select('-password');
-      const newPost = {
-        text: req.body.text,
-        name: user.name,
-        avatar: user.avatar,
-        user: req.user.id,
-      };
-      const post = new Post(newPost);
-      await post.save();
-      res.json(post);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).json('Server Error');
-    }
+router.post('/', [auth, upload.single('photo')], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+
+    const newPost = {
+      text: req.body.text,
+      name: user.name,
+      avatar: user.avatar,
+      user: req.user.id,
+    };
+
+    //handle upload file
+    if (req.file) {
+      newPost.photo = req.file.filename;
+    }
+
+    const post = new Post(newPost);
+    console.log('new post', newPost);
+    console.log('post', post);
+    await post.save();
+    res.json(post);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json('Server Error');
+  }
+});
 
 //@route    GET api/posts
 //@desc     Get all posts
