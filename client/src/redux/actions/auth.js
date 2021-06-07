@@ -21,7 +21,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/auth');
 
-    await dispatch({
+    dispatch({
       type: LOAD_USER,
       payload: {
         token: localStorage.getItem('token'),
@@ -53,12 +53,11 @@ export const loginUser = (formData) => async (dispatch) => {
       payload: res.data.token,
     });
     //load User
-    await dispatch(loadUser());
+    dispatch(loadUser());
   } catch (error) {
+    console.log('from login', error);
     const errors = error.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
+    errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -90,9 +89,7 @@ export const register = (formData) => async (dispatch) => {
     dispatch(loadUser());
   } catch (error) {
     const errors = error.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
+    errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     dispatch({
       type: REGISTER_FAIL,
     });

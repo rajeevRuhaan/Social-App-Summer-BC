@@ -1,22 +1,23 @@
 import React from 'react';
+import { Jumbotron, Button } from 'react-bootstrap';
+
 
 const HeroBanner = ({ imageSrc, quote, name, title }) => {
-  return (
-    <div className='hero-banner'>
-      <div className='hero-banner-bg'>
-        <img src={imageSrc} alt={name} className='hero-banner-bg-img' />
-      </div>
-      <div className='hero-banner-content'>
-        <div className='hero-banner-quote'>
-          <span>"</span>
-          {quote}
+    return (
+        <div className="hero-banner">
+            <div class="hero-banner-bg">
+                <img src={imageSrc} alt={name} className="hero-banner-bg-img" />
+            </div>
+            <div className="hero-banner-content">
+                <div className="hero-banner-quote">
+                    <span>"</span>{quote}
+                </div>
+                <div className="hero-banner-name">
+                    {name} <span>{title}</span>
+                </div>
+            </div>
         </div>
-        <div className='hero-banner-name'>
-          {name} <span>{title}</span>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default HeroBanner;

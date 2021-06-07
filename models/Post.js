@@ -29,9 +29,6 @@ const PostSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
       },
-      name: {
-        type: String,
-      },
       text: {
         type: String,
       },
@@ -44,10 +41,6 @@ const PostSchema = new mongoose.Schema({
       },
     },
   ],
-  toggleComments: {
-    type: Boolean,
-    default: false,
-  },
   date: {
     type: Date,
     default: Date.now,

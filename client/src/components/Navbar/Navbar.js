@@ -3,23 +3,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../redux/actions/auth';
 
 const CustomNavbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const auth = useSelector((state) => state.auth);
 
   return (
-    <Navbar
-      className='shadow'
-      collapseOnSelect
-      bg='light'
-      expand='sm'
-      fixed='top'
-    >
+    <Navbar collapseOnSelect bg='light' expand='lg' fixed='top'>
       <Container>
         <LinkContainer to='/home'>
           <Navbar.Brand>DevNet</Navbar.Brand>
@@ -30,7 +23,7 @@ const CustomNavbar = () => {
             <IndexLinkContainer to='/'>
               <Nav.Link>Home</Nav.Link>
             </IndexLinkContainer>
-            <LinkContainer to={`/profile/${auth.user._id}`}>
+            <LinkContainer to='/profile'>
               <Nav.Link>Profile</Nav.Link>
             </LinkContainer>
             <Nav.Link
