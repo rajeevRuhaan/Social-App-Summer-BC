@@ -32,7 +32,7 @@ const PostItem = ({
   const auth = useSelector((state) => state.auth);
 
   return (
-    <Card className='shadow-sm my-3 p-3'>
+    <Card className='shadow-sm mb-3 p-3'>
       <Row className='mt-3'>
         <Col xs={2}>
           <Link to={`/profile/${user}`}>
@@ -78,7 +78,7 @@ const PostItem = ({
       </Row>
       <Row className='mt-3'>
         <Col>
-          <div className='border-top  w-100'></div>
+          <div className='border-top w-100'></div>
         </Col>
       </Row>
       <Row className='post-cta--container mt-3'>
