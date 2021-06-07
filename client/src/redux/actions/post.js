@@ -7,7 +7,6 @@ import {
   GET_USER_POST,
   ADD_COMMENT,
   TOGGLE_COMMENTS,
-  GET_POST_BY_USER_ID,
 } from './types';
 
 //Add post

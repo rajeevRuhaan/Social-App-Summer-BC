@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
-import { addPost, getCurrentUserPosts } from '../../redux/actions/post';
+import { addPost } from '../../redux/actions/post';
 
 const CreatePostBox = () => {
   const {
@@ -19,26 +19,30 @@ const CreatePostBox = () => {
 
   const [newPost, setNewPost] = useState({
     text: '',
-    photo: '',
+    photos: '',
   });
 
   const handleChange = (e) => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
   };
 
-  const handlePhoto = (e) => {
-    setNewPost({ ...newPost, photo: e.target.files[0] });
+  const handlePhotos = (e) => {
+    setNewPost({ ...newPost, photos: e.target.files });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
-    formData.append('photo', newPost.photo);
     formData.append('text', newPost.text);
+    for (const key of Object.keys(newPost.photos)) {
+      formData.append('photos', newPost.photos[key]);
+    }
+
     //send form
     dispatch(addPost(formData));
     //clear form
-    setNewPost({ text: '', photo: '' });
+    setNewPost({ text: '', photos: '' });
   };
 
   return (
@@ -64,8 +68,9 @@ const CreatePostBox = () => {
                 <input
                   type='file'
                   accept='.png, .jpg, .jpeg'
-                  name='photo'
-                  onChange={handlePhoto}
+                  name='photos'
+                  onChange={handlePhotos}
+                  multiple
                 />
                 <i className='fas fa-image'></i> Photo
               </label>
