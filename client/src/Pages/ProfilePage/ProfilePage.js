@@ -15,6 +15,7 @@ import UserBox from '../../components/UserBox/UserBox';
 import CreatePostBox from '../../components/CreatPostBox/CreatePostBox';
 import Posts from '../../components/Posts/Posts';
 import { getCurrentUserPosts } from '../../redux/actions/post';
+import AboutMe from '../../components/AboutMe/AboutMe';
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -43,7 +44,7 @@ const ProfilePage = () => {
       <CustomNavbar />
       <ProfileBanner />
       <section className='profilepage-content'>
-        <div className='text-center'>
+        <div className='text-center mb-3'>
           <h4>{profileById.user.name}</h4>
           <span>{profileById.status}</span>
         </div>
@@ -54,6 +55,7 @@ const ProfilePage = () => {
               profile={profileById}
               posts={currentUserPosts}
             />
+            <AboutMe {...profileById} />
           </Col>
           <Col xs={8}>
             {auth.user._id === userId && <CreatePostBox />}

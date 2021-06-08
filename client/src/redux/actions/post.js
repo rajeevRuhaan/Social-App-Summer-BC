@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 import {
   ADD_POST,
   GET_POSTS,
@@ -8,6 +9,7 @@ import {
   ADD_COMMENT,
   TOGGLE_COMMENTS,
   CLEAR_POSTS,
+  DELETE_POST,
 } from './types';
 
 //Add post
@@ -61,6 +63,24 @@ export const getCurrentUserPosts = (userId) => async (dispatch) => {
       type: GET_USER_POST,
       payload: res.data,
     });
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//delete post
+export const deletePost = (postId) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/api/posts/${postId}`);
+    dispatch({ type: DELETE_POST, payload: postId });
+
+    dispatch(setAlert(res.data.msg, 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,
