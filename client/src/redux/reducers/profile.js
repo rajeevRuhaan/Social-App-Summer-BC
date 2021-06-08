@@ -3,6 +3,7 @@ import {
   CLEAR_PROFILE_BY_ID,
   GET_PROFILE,
   GET_PROFILE_BY_ID,
+  GET_REPOS,
   PROFILE_ERROR,
 } from '../actions/types';
 
@@ -29,6 +30,13 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profileById: payload,
+        loading: false,
+      };
+
+    case GET_REPOS:
+      return {
+        ...state,
+        repos: payload,
         loading: false,
       };
 

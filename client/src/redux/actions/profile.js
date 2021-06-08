@@ -5,6 +5,7 @@ import {
   CLEAR_PROFILE_BY_ID,
   GET_PROFILE,
   GET_PROFILE_BY_ID,
+  GET_REPOS,
   PROFILE_ERROR,
 } from './types';
 
@@ -30,7 +31,11 @@ export const getUserProfileById = (userId) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
 
-    dispatch({ type: GET_PROFILE_BY_ID, payload: res.data });
+    await dispatch({ type: GET_PROFILE_BY_ID, payload: res.data });
+
+    if (res.data.githubusername) {
+      dispatch(getGithubRepos(res.data.githubusername));
+    }
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
@@ -75,6 +80,25 @@ export const createAndUpdateProfile =
       });
     }
   };
+
+//Get Github repos
+export const getGithubRepos = (username) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/profile/github/${username}`);
+    dispatch({
+      type: GET_REPOS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
 
 //clear log-in user profile
 export const clearProfile = () => ({
