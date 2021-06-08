@@ -44,6 +44,7 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: null,
+        repos: [],
         loading: false,
       };
 
@@ -51,6 +52,7 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profileById: null,
+        repos: [],
         loading: false,
       };
 
