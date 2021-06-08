@@ -27,7 +27,7 @@ const CreatePostBox = () => {
   };
 
   const handlePhoto = (e) => {
-    setNewPost({ ...newPost, photo: e.target.file });
+    setNewPost({ ...newPost, photo: e.target.files[0] });
   };
 
   const handleSubmit = (e) => {
