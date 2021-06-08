@@ -6,44 +6,41 @@ const Post = require('../../models/Post');
 const User = require('../../models/User');
 const Profie = require('../../models/Profile');
 const auth = require('../../middlewares/auth');
-const {
-  uploadPostImages,
-  resizePostImages,
-} = require('../../middlewares/uploadPhotos');
+const { uploadPostImages } = require('../../middlewares/uploadPhotos');
 
 //@route    POST api/posts
 //@desc     Create a post
 //@access   Private
-router.post(
-  '/',
-  [auth, uploadPostImages, resizePostImages],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    try {
-      const user = await User.findById(req.user.id).select('-password');
-
-      const newPost = {
-        text: req.body.text,
-        name: user.name,
-        avatar: user.avatar,
-        user: req.user.id,
-        photos: req.body.photos,
-      };
-
-      const post = new Post(newPost);
-      console.log('new post', newPost);
-      console.log('post', post);
-      await post.save();
-      res.json(post);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).json('Server Error');
-    }
+router.post('/', [auth, uploadPostImages], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+
+    const newPost = {
+      text: req.body.text,
+      name: user.name,
+      avatar: user.avatar,
+      user: req.user.id,
+    };
+
+    //handle upload file
+    if (req.file) {
+      newPost.photo = req.file.filename;
+    }
+
+    const post = new Post(newPost);
+    console.log('new post', newPost);
+    console.log('post', post);
+    await post.save();
+    res.json(post);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json('Server Error');
+  }
+});
 
 //@route    GET api/posts
 //@desc     Get all posts
