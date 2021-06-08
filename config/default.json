@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://iamanh1990:zinger90@cluster0.gy1zg.mongodb.net/test",
-  "jwtSecret": "This is the secret"
+  "jwtSecret": "This is the secret",
+  "githubClientId": "f2fe7301f841de834f25",
+  "githubSecret": "c002463bad635e65d0589c628ab5b2891bc89873"
 }
