@@ -35,6 +35,9 @@ const CustomNavbar = () => {
             <LinkContainer to={`/profile/${auth.user && auth.user._id}`}>
               <Nav.Link>Profile</Nav.Link>
             </LinkContainer>
+            <LinkContainer to='/setting'>
+              <Nav.Link>Setting</Nav.Link>
+            </LinkContainer>
             <Nav.Link
               onClick={() => {
                 dispatch(logout());

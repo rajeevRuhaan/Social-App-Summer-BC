@@ -19,9 +19,17 @@
 @import './components/CreatPostBox/create-post';
 @import './components/Spinner/spinner';
 @import './components/AboutMe/about-me';
+@import './components/SignInForm/sign-in-form';
+@import './components/SignUpForm/sign-up-form';
+@import './components/Main/HeroBanner/heroBanner';
+@import './components/Alert/alert';
+@import './components/PostItem/postItem';
+@import './components/ProfileBanner/profile-banner';
+@import './components/SettingForm/settingForm';
 
 //pages
 @import './pages/SignInPage/sign-in-page';
 @import './pages/SignUpPage/sign-up-page';
 @import './pages/HomePage/homepage';
 @import './pages/ProfilePage/profile-page';
+@import './pages/SettingPage/setting';

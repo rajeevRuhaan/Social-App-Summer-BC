@@ -1,0 +1,18 @@
+.form-area {
+  flex: 2;
+  margin-left: 1rem;
+
+  .form-section {
+    h3 {
+      padding-bottom: 1rem;
+    }
+  }
+
+  .section-hr {
+    margin: 2rem 0;
+  }
+
+  button {
+    width: 100%;
+  }
+}
