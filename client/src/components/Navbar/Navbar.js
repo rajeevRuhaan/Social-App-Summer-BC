@@ -36,7 +36,7 @@ const CustomNavbar = () => {
               <Nav.Link>Profile</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/setting'>
-              <Nav.Link>Settting</Nav.Link>
+              <Nav.Link>Setting</Nav.Link>
             </LinkContainer>
             <Nav.Link
               onClick={() => {

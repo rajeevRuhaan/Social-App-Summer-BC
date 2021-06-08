@@ -1,25 +1,27 @@
 //bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 //fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 //General styles
-@import './styles/custom';
-@import './styles/variables';
+@import "./styles/custom";
+@import "./styles/variables";
 
 //Components
 
-@import './components/SignInForm/sign-in-form';
-@import './components/SignUpForm/sign-up-form';
-@import './components/Main/HeroBanner/heroBanner';
-@import './components/Alert/alert';
-@import './components/PostItem/postItem';
-@import './components/ProfileBanner/profile-banner';
-@import './components/CreatPostBox/create-post';
+@import "./components/SignInForm/sign-in-form";
+@import "./components/SignUpForm/sign-up-form";
+@import "./components/Main/HeroBanner/heroBanner";
+@import "./components/Alert/alert";
+@import "./components/PostItem/postItem";
+@import "./components/ProfileBanner/profile-banner";
+@import "./components/SettingForm/settingForm";
+@import "./components/SettingSection/settingSection";
 
 //pages
-@import './pages/SignInPage/sign-in-page';
-@import './pages/SignUpPage/sign-up-page';
-@import './pages/HomePage/homepage';
-@import './pages/ProfilePage/profile-page';
+@import "./pages/SignInPage/sign-in-page";
+@import "./pages/SignUpPage/sign-up-page";
+@import "./pages/HomePage/homepage";
+@import "./pages/ProfilePage/profile-page";
+@import "./pages/SettingPage/setting";
