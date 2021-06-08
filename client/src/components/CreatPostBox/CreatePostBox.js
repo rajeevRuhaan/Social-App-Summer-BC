@@ -6,8 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import { Formik, Field, Form } from 'formik';
-import * as yup from 'yup';
 import { addPost } from '../../redux/actions/post';
 
 const CreatePostBox = () => {
@@ -32,6 +30,7 @@ const CreatePostBox = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!newPost.text) return;
 
     const formData = new FormData();
     formData.append('text', newPost.text);

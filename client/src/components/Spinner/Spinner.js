@@ -2,7 +2,7 @@ import React from 'react';
 
 const Spinner = () => {
   return (
-    <div>
+    <div className='spinner'>
       <img
         src={`${process.env.PUBLIC_URL}/assets/images/spinner.gif`}
         alt='spinner'

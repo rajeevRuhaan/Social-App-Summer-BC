@@ -77,10 +77,8 @@ export const getCurrentUserPosts = (userId) => async (dispatch) => {
 //delete post
 export const deletePost = (postId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/${postId}`);
+    await axios.delete(`/api/posts/${postId}`);
     dispatch({ type: DELETE_POST, payload: postId });
-
-    dispatch(setAlert(res.data.msg, 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,

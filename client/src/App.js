@@ -11,6 +11,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import SettingPage from './pages/SettingPage/SettingPage';
 
 const App = () => {
   useEffect(() => {
@@ -26,6 +27,11 @@ const App = () => {
           <PrivateRoute exact path='/home' component={HomePage} />
           <PrivateRoute exact path='/dashboard' component={DashboardPage} />
           <PrivateRoute exact path='/profile/:userId' component={ProfilePage} />
+          <PrivateRoute
+            exact
+            path='/settings/:userId'
+            component={SettingPage}
+          />
         </Switch>
       </Router>
     </Provider>
