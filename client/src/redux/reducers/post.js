@@ -2,6 +2,7 @@ import {
   ADD_COMMENT,
   ADD_POST,
   CLEAR_POSTS,
+  DELETE_POST,
   GET_POSTS,
   GET_USER_POST,
   POST_ERROR,
@@ -48,6 +49,16 @@ const postReducer = (state = intialState, action) => {
         ...state,
         posts: null,
         currentUserPosts: null,
+      };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== payload),
+        currentUserPosts: state.currentUserPosts.filter(
+          (post) => post._id !== payload
+        ),
+        loading: false,
       };
 
     case UPDATE_LIKE:

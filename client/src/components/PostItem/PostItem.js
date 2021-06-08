@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   addLike,
+  deletePost,
   removeLike,
   toggleCommentsForm,
 } from '../../redux/actions/post';
@@ -32,7 +33,7 @@ const PostItem = ({
   const auth = useSelector((state) => state.auth);
 
   return (
-    <Card className='shadow-sm mb-3 p-3'>
+    <Card className='shadow-sm mb-3 p-3 post-item-container'>
       <Row className='mt-3'>
         <Col xs={2}>
           <Link to={`/profile/${user}`}>
@@ -43,6 +44,12 @@ const PostItem = ({
           <Link to={`/profile/${user}`}>{name}</Link> <br />
           <Moment format='YYYY/MM/DD'>{date}</Moment>
         </Col>
+        {user === auth.user._id && (
+          <i
+            onClick={() => dispatch(deletePost(_id))}
+            className='fas fa-trash-alt'
+          ></i>
+        )}
       </Row>
       <Row className='mt-3'>
         <Col>

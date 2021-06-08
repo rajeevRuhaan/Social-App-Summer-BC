@@ -46,7 +46,7 @@ const CreatePostBox = () => {
   };
 
   return (
-    <Card className='shadow-sm p-3'>
+    <Card className='shadow-sm p-3 mb-3'>
       <Row>
         <Col xs={2}>
           <Link to={`/profile/${_id}`}>

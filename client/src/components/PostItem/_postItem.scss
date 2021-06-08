@@ -1,9 +1,17 @@
-.post-cta--container {
-  .post-cta--item {
+.post-item-container {
+  .fa-trash-alt {
+    position: absolute;
+    right: 1rem;
     cursor: pointer;
+  }
 
-    .active {
-      color: $primary-color;
+  .post-cta--container {
+    .post-cta--item {
+      cursor: pointer;
+
+      .active {
+        color: $primary-color;
+      }
     }
   }
 }
