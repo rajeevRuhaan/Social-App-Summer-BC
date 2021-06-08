@@ -19,15 +19,15 @@ const CreatePostBox = () => {
 
   const [newPost, setNewPost] = useState({
     text: '',
-    photos: '',
+    photo: '',
   });
 
   const handleChange = (e) => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
   };
 
-  const handlePhotos = (e) => {
-    setNewPost({ ...newPost, photos: e.target.files });
+  const handlePhoto = (e) => {
+    setNewPost({ ...newPost, photo: e.target.file });
   };
 
   const handleSubmit = (e) => {
@@ -35,14 +35,12 @@ const CreatePostBox = () => {
 
     const formData = new FormData();
     formData.append('text', newPost.text);
-    for (const key of Object.keys(newPost.photos)) {
-      formData.append('photos', newPost.photos[key]);
-    }
+    formData.append('photo', newPost.photo);
 
     //send form
     dispatch(addPost(formData));
     //clear form
-    setNewPost({ text: '', photos: '' });
+    setNewPost({ text: '', photo: '' });
   };
 
   return (
@@ -68,8 +66,8 @@ const CreatePostBox = () => {
                 <input
                   type='file'
                   accept='.png, .jpg, .jpeg'
-                  name='photos'
-                  onChange={handlePhotos}
+                  name='photo'
+                  onChange={handlePhoto}
                   multiple
                 />
                 <i className='fas fa-image'></i> Photo

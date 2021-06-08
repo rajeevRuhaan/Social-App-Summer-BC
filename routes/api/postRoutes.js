@@ -24,8 +24,12 @@ router.post('/', [auth, uploadPostImages], async (req, res) => {
       name: user.name,
       avatar: user.avatar,
       user: req.user.id,
-      photo: req.body.photo,
     };
+
+    //handle upload file
+    if (req.file) {
+      newPost.photo = req.file.filename;
+    }
 
     const post = new Post(newPost);
     console.log('new post', newPost);
