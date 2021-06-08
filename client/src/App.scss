@@ -9,12 +9,18 @@
 @import "./styles/variables";
 
 //Components
-// @import "./components/Navbar/";
 @import "./components/SignInForm/sign-in-form";
 @import "./components/SignUpForm/sign-up-form";
 @import "./components/Main/HeroBanner/heroBanner";
 @import "./components/Alert/alert";
+@import "./components/PostItem/postItem";
+@import "./components/ProfileBanner/profile-banner";
+@import "./components/SettingForm/settingForm";
+@import "./components/SettingSection/settingSection";
 
 //pages
 @import "./pages/SignInPage/sign-in-page";
 @import "./pages/SignUpPage/sign-up-page";
+@import "./pages/HomePage/homepage";
+@import "./pages/ProfilePage/profile-page";
+@import "./pages/SettingPage/setting";

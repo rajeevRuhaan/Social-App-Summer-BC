@@ -12,6 +12,8 @@ import SignUpPage from './pages/SignUpPage/SignUpPage';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import HomePage from './pages/HomePage/HomePage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import Setting from './pages/SettingPage/Setting';
 
 const App = () => {
   useEffect(() => {
@@ -27,6 +29,8 @@ const App = () => {
           <Route exact path='/register' component={SignUpPage} />
           <Route exact path='/home' component={HomePage} />
           <PrivateRoute exact path='/dashboard' component={DashboardPage} />
+          <PrivateRoute exact path='/profile/:userId' component={ProfilePage} />
+          <PrivateRoute exact path='/setting' component={Setting} />
         </Switch>
         {/* </Container> */}
       </Router>
