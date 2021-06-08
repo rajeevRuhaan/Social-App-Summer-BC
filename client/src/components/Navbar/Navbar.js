@@ -32,6 +32,9 @@ const CustomNavbar = () => {
             <LinkContainer to='/profile'>
               <Nav.Link>Profile</Nav.Link>
             </LinkContainer>
+            <LinkContainer to='/setting'>
+              <Nav.Link>Settting</Nav.Link>
+            </LinkContainer>
             <Nav.Link
               onClick={() => {
                 dispatch(logout());
