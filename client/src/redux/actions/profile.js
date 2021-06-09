@@ -3,10 +3,12 @@ import { setAlert } from './alert';
 import {
   CLEAR_PROFILE,
   CLEAR_PROFILE_BY_ID,
+  ADD_EXPERIENCE,
   GET_PROFILE,
   GET_PROFILE_BY_ID,
   GET_REPOS,
   PROFILE_ERROR,
+  ADD_PROFILE,
 } from './types';
 
 //get current user profile
@@ -62,7 +64,7 @@ export const createAndUpdateProfile =
 
       //fetch current user profile
       dispatch({
-        type: GET_PROFILE,
+        type: ADD_PROFILE,
         payload: res.data,
       });
 
@@ -78,6 +80,36 @@ export const createAndUpdateProfile =
       });
     }
   };
+
+//Create experience
+export const createExperience = (formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.put('/api/profile/experience', formData, config);
+
+    //fetch current user profile
+    dispatch({
+      type: ADD_EXPERIENCE,
+      payload: res.data,
+    });
+
+    //set alert
+    dispatch(setAlert('Profile updated', 'success'));
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
 
 //Get Github repos
 export const getGithubRepos = (username) => async (dispatch) => {

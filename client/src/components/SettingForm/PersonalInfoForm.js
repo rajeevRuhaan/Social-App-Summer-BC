@@ -37,27 +37,32 @@ const PersonalInfoForm = () => {
     setFormData({ ...profile });
     if (profile) {
       setFormData({ ...profile, skills: profile.skills.join(', ') });
-      profile.social.twitter &&
+      profile.social &&
+        profile.social.twitter &&
         setFormData((prevState) => ({
           ...prevState,
           twitter: profile.social.twitter,
         }));
-      profile.social.youtube &&
+      profile.social &&
+        profile.social.youtube &&
         setFormData((prevState) => ({
           ...prevState,
           youtube: profile.social.youtube,
         }));
-      profile.social.facebook &&
+      profile.social &&
+        profile.social.facebook &&
         setFormData((prevState) => ({
           ...prevState,
           facebook: profile.social.facebook,
         }));
-      profile.social.instagram &&
+      profile.social &&
+        profile.social.instagram &&
         setFormData((prevState) => ({
           ...prevState,
           instagram: profile.social.instagram,
         }));
-      profile.social.linkedin &&
+      profile.social &&
+        profile.social.linkedin &&
         setFormData((prevState) => ({
           ...prevState,
           linkedin: profile.social.linkedin,

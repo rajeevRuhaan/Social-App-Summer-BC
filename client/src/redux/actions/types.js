@@ -11,7 +11,9 @@ export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 
 export const GET_PROFILE = 'GET_PROFILE';
+export const ADD_PROFILE = 'ADD_PROFILE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const ADD_EXPERIENCE = 'ADD_EXPERIENCE';
 export const GET_PROFILE_BY_ID = 'GET_PROFILE_BY_ID';
 export const CLEAR_PROFILE_BY_ID = 'CLEAR_PROFILE_BY_ID';
 export const GET_REPOS = 'GET_REPOS';

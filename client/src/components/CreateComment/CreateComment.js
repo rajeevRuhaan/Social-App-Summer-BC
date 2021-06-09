@@ -17,7 +17,17 @@ const CreateComment = ({ postId }) => {
   return (
     <Row>
       <Col xs={2}>
-        <Image roundedCircle src={avatar} />
+        <div
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+          }}
+        />
       </Col>
       <Col xs={10}>
         <Formik

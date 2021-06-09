@@ -195,8 +195,6 @@ router.post(
         user: req.user.id,
       };
 
-      console.log(newComment);
-
       post.comments.unshift(newComment);
       await post.save();
 

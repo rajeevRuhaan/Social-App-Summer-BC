@@ -9,7 +9,17 @@ const CommentItem = ({ text, name, avatar, user }) => {
     <Row className='mt-2'>
       <Col xs={2}>
         <Link to={`/profile/${user}`}>
-          <Image roundedCircle src={avatar} />
+          <div
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+            }}
+          />
         </Link>
       </Col>
       <Col xs={10} className='border'>
