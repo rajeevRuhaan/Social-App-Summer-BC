@@ -109,7 +109,7 @@ const AboutMe = ({
         ) : (
           <Col>
             {skills.map((skill, i) => (
-              <span key={i} className='skill'>
+              <span key={i} className='badge bg-primary text-white mr-1'>
                 {skill}
               </span>
             ))}

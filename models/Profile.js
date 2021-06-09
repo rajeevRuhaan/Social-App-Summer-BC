@@ -9,6 +9,10 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  avatar: {
+    type: String,
+    default: '',
+  },
   website: {
     type: String,
     default: '',

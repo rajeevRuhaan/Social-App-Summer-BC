@@ -37,7 +37,17 @@ const PostItem = ({
       <Row className='mt-3'>
         <Col xs={2}>
           <Link to={`/profile/${user}`}>
-            <Image roundedCircle src={avatar} />
+            <div
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+              }}
+            />
           </Link>
         </Col>
         <Col xs={10}>

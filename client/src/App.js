@@ -27,11 +27,7 @@ const App = () => {
           <PrivateRoute exact path='/home' component={HomePage} />
           <PrivateRoute exact path='/dashboard' component={DashboardPage} />
           <PrivateRoute exact path='/profile/:userId' component={ProfilePage} />
-          <PrivateRoute
-            exact
-            path='/settings/:userId'
-            component={SettingPage}
-          />
+          <PrivateRoute exact path='/setting' component={SettingPage} />
         </Switch>
       </Router>
     </Provider>

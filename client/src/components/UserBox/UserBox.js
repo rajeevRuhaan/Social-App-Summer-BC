@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import measureProgress from '../../redux/utils/measureProgress';
@@ -30,7 +29,17 @@ const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
       <Row>
         <Col sm={4}>
           <Link to={`/profile/${_id}`}>
-            <Image roundedCircle src={avatar} />
+            <div
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+              }}
+            />
           </Link>
         </Col>
         <Col sm={8}>

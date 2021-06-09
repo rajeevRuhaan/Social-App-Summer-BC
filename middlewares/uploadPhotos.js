@@ -25,3 +25,5 @@ const upload = multer({
 });
 
 exports.uploadPostImages = upload.array('photos', 8);
+
+exports.uploadAvatar = upload.single('avatar');

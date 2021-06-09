@@ -3,11 +3,31 @@ import { setAlert } from './alert';
 import {
   CLEAR_PROFILE,
   CLEAR_PROFILE_BY_ID,
+  ADD_EXPERIENCE,
   GET_PROFILE,
+  GET_PROFILES,
   GET_PROFILE_BY_ID,
   GET_REPOS,
   PROFILE_ERROR,
+  ADD_PROFILE,
 } from './types';
+
+//get all users
+export const getAllProfiles = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/profile');
+
+    dispatch({ type: GET_PROFILES, payload: res.data });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
 
 //get current user profile
 export const getCurrentProfile = () => async (dispatch) => {
@@ -49,7 +69,7 @@ export const getUserProfileById = (userId) => async (dispatch) => {
 
 //create or update profile
 export const createAndUpdateProfile =
-  (formData = {}, edit = false) =>
+  (formData = {}) =>
   async (dispatch) => {
     try {
       const config = {
@@ -62,14 +82,12 @@ export const createAndUpdateProfile =
 
       //fetch current user profile
       dispatch({
-        type: GET_PROFILE,
+        type: ADD_PROFILE,
         payload: res.data,
       });
 
       //set alert
-      dispatch(
-        setAlert(edit ? 'Profile updated' : 'Profile created', 'success')
-      );
+      dispatch(setAlert('Profile updated', 'success'));
     } catch (error) {
       dispatch({
         type: PROFILE_ERROR,
@@ -80,6 +98,36 @@ export const createAndUpdateProfile =
       });
     }
   };
+
+//Create experience
+export const createExperience = (formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.put('/api/profile/experience', formData, config);
+
+    //fetch current user profile
+    dispatch({
+      type: ADD_EXPERIENCE,
+      payload: res.data,
+    });
+
+    //set alert
+    dispatch(setAlert('Profile updated', 'success'));
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
 
 //Get Github repos
 export const getGithubRepos = (username) => async (dispatch) => {

@@ -6,6 +6,7 @@ import {
   LOGOUT,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
+  UPDATE_USER,
 } from '../actions/types';
 
 const initialState = {
@@ -23,6 +24,13 @@ const userReducer = (state = initialState, action) => {
         ...state,
         ...payload,
         isAuthenticated: true,
+        loading: false,
+      };
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: payload,
         loading: false,
       };
 
