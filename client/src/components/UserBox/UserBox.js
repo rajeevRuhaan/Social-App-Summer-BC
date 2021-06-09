@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-
+import { Card, Row, Col, Button, ProgressBar, Image } from 'react-bootstrap';
 import measureProgress from '../../redux/utils/measureProgress';
 
 const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
@@ -41,7 +36,7 @@ const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
         </Card>
       </Link>
       <Link to={`/profile/${_id}`}>
-        <div className="user-box-section">
+        <div className="user-box-section profile-progress">
           <Card.Text>
             Profile Ready:{' '}
             <span>
@@ -75,8 +70,10 @@ const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
               education,
             ])}
           />
+          {/* <Button variant="link">Complete Your Profile</Button> */}
         </div>
       </Link>
+      {/* <hr /> */}
       <Link to={`/profile/${_id}`}>
         <div className="user-box-section">
           <Card.Text>Total Posts: <span>{posts.length}</span>{' '}</Card.Text>
