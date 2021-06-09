@@ -52,17 +52,22 @@ const PostItem = ({
           <p>{text}</p>
         </Col>
       </Row>
-      <Row className='mt-3' className="post-body">
-        {photos.length > 0 &&
-          photos.map((photo, i) => (
-            <Col sm={4} key={i}>
-              <Image
-                fluid
-                src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
-              />
-            </Col>
-          ))}
-      </Row>
+
+      {photos.length > 0 &&
+        <Row className='mt-3' className="post-body">
+          {
+            photos.map((photo, i) => (
+              <Col sm={4} key={i}>
+                <Image
+                  fluid
+                  src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
+                />
+              </Col>
+            ))
+          }
+        </Row>
+      }
+
       <Row className='mt-3' className="post-action-summary">
         <Col className='d-flex align-items-center'>
           {/* like and comment rendering */}
