@@ -49,7 +49,7 @@ export const getUserProfileById = (userId) => async (dispatch) => {
 
 //create or update profile
 export const createAndUpdateProfile =
-  (formData = {}, edit = false) =>
+  (formData = {}) =>
   async (dispatch) => {
     try {
       const config = {
@@ -67,9 +67,7 @@ export const createAndUpdateProfile =
       });
 
       //set alert
-      dispatch(
-        setAlert(edit ? 'Profile updated' : 'Profile created', 'success')
-      );
+      dispatch(setAlert('Profile updated', 'success'));
     } catch (error) {
       dispatch({
         type: PROFILE_ERROR,

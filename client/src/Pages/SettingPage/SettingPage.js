@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,6 +12,9 @@ import EducationForm from '../../components/SettingForm/EducationForm';
 import ExperienceForm from '../../components/SettingForm/ExperienceForm';
 
 const Setting = () => {
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.profile);
+
   return (
     <Fragment>
       <CustomNavbar />

@@ -7,13 +7,14 @@ const config = require('config');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const auth = require('../../middlewares/auth');
+const { uploadAvatar } = require('../../middlewares/uploadPhotos');
 
 //@route    GET api/profile/me
 //@desc     Get current user profile
 //@access   Private
 router.get('/me', auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
+    const profile = await Profile.findOne({ user: req.user.id }).select('-__v');
     if (!profile) {
       return res.status(400).json({ msg: 'There is no profile for this user' });
     }
@@ -27,7 +28,7 @@ router.get('/me', auth, async (req, res) => {
 //@route   POST api/profile
 //@desc     Create or update user profile
 //@access   Private
-router.post('/', [auth], async (req, res) => {
+router.post('/', [auth, uploadAvatar], async (req, res) => {
   const {
     company,
     website,
@@ -63,6 +64,12 @@ router.post('/', [auth], async (req, res) => {
   if (twitter) profileFields.social.twitter = twitter;
   if (instagram) profileFields.social.instagram = instagram;
   if (linkedin) profileFields.social.linkedin = linkedin;
+
+  //get avatar
+  if (req.file) {
+    console.log('from req.file', req.file);
+    profileFields.avatar = req.file.filename;
+  }
 
   try {
     let profile = await Profile.findOne({ user: req.user.id });
