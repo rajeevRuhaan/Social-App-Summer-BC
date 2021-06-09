@@ -11,12 +11,15 @@ import PersonalInfoForm from '../../components/SettingForm/PersonalInfoForm';
 import EducationForm from '../../components/SettingForm/EducationForm';
 import ExperienceForm from '../../components/SettingForm/ExperienceForm';
 import AcccountForm from '../../components/SettingForm/AccountForm';
+import Alert from '../../components/Alert/Alert';
 
 const Setting = () => {
   return (
     <Fragment>
       <CustomNavbar />
+
       <Container className='setting-area'>
+        <Alert />
         <Row className='px-5'>
           <Tab.Container defaultActiveKey='personalInfo'>
             <Row>
