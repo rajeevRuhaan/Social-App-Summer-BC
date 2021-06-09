@@ -10,15 +10,16 @@
 
 //Components
 
-@import './components/SignInForm/sign-in-form';
-@import './components/SignUpForm/sign-up-form';
-@import './components/Main/HeroBanner/heroBanner';
-@import './components/Alert/alert';
-@import './components/PostItem/postItem';
-@import './components/ProfileBanner/profile-banner';
-@import './components/CreatPostBox/create-post';
-@import './components/Spinner/spinner';
-@import './components/AboutMe/about-me';
+@import "./components/SignInForm/sign-in-form";
+@import "./components/SignUpForm/sign-up-form";
+@import "./components/Main/HeroBanner/heroBanner";
+@import "./components/Alert/alert";
+@import "./components/PostItem/postItem";
+@import "./components/ProfileBanner/profile-banner";
+@import "./components/CreatPostBox/create-post";
+@import "./components/Spinner/spinner";
+@import "./components/AboutMe/about-me";
+@import "./components/UserBox/userBox";
 
 //pages
 @import "./pages/SignInPage/sign-in-page";

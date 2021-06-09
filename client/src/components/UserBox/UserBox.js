@@ -27,56 +27,61 @@ const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
 
   return (
     <Card className='shadow-sm p-3'>
-      <Row>
-        <Col sm={4}>
-          <Link to={`/profile/${_id}`}>
-            <Image roundedCircle src={avatar} />
-          </Link>
-        </Col>
-        <Col sm={8}>
-          <Link to={`/profile/${_id}`}>
-            <Card.Title>{name}</Card.Title>
-          </Link>
-          <p className='text-muted'>{status}</p>
-        </Col>
-      </Row>
-      <p>
-        Profile Ready:{' '}
-        <span>
-          {measureProgress([
-            status,
-            social,
-            skills,
-            company,
-            website,
-            location,
-            bio,
-            githubusername,
-            experience,
-            education,
-          ])}
+      <Link to={`/profile/${_id}`}>
+        <Card className="user-box-section profile-card">
+          <Row>
+            <Col sm={3}>
+              <Image roundedCircle src={avatar} />
+            </Col>
+            <Col sm={9}>
+              <Card.Title>{name}</Card.Title>
+              <Card.Text className='text-muted'>{status}</Card.Text>
+            </Col>
+          </Row>
+        </Card>
+      </Link>
+      <Link to={`/profile/${_id}`}>
+        <div className="user-box-section">
+          <Card.Text>
+            Profile Ready:{' '}
+            <span>
+              {measureProgress([
+                status,
+                social,
+                skills,
+                company,
+                website,
+                location,
+                bio,
+                githubusername,
+                experience,
+                education,
+              ])}
           %
         </span>{' '}
-      </p>
-      <ProgressBar
-        variant='success'
-        now={measureProgress([
-          status,
-          social,
-          skills,
-          company,
-          website,
-          location,
-          bio,
-          githubusername,
-          experience,
-          education,
-        ])}
-      />
-
-      <p>
-        Total Posts: <span>{posts.length}</span>{' '}
-      </p>
+          </Card.Text>
+          <ProgressBar
+            variant='success'
+            now={measureProgress([
+              status,
+              social,
+              skills,
+              company,
+              website,
+              location,
+              bio,
+              githubusername,
+              experience,
+              education,
+            ])}
+          />
+        </div>
+      </Link>
+      <Link to={`/profile/${_id}`}>
+        <div className="user-box-section">
+          <Card.Text>Total Posts: <span>{posts.length}</span>{' '}</Card.Text>
+        </div>
+      </Link>
     </Card>
   );
 };

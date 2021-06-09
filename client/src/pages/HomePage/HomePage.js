@@ -1,8 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { useDispatch, useSelector } from 'react-redux';
-
 import CustomNavbar from '../../components/Navbar/Navbar';
 import Spinner from '../../components/Spinner/Spinner';
 import UserBox from '../../components/UserBox/UserBox';
@@ -10,6 +7,7 @@ import CreatePostBox from '../../components/CreatPostBox/CreatePostBox';
 import Posts from '../../components/Posts/Posts';
 import { getCurrentProfile } from '../../redux/actions/profile';
 import { getCurrentUserPosts, getPosts } from '../../redux/actions/post';
+import { Row, Col, Container } from 'react-bootstrap';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -31,8 +29,8 @@ const HomePage = () => {
   return auth.user && post.posts && profile.profile ? (
     <Fragment>
       <CustomNavbar />
-      <section className='homepage-content'>
-        <Row className='px-5'>
+      <Container className='homepage-content'>
+        <Row>
           <Col xs={4}>
             <UserBox
               user={auth.user}
@@ -45,7 +43,7 @@ const HomePage = () => {
             <Posts posts={post.posts} />
           </Col>
         </Row>
-      </section>
+      </Container>
     </Fragment>
   ) : (
     <Spinner />
