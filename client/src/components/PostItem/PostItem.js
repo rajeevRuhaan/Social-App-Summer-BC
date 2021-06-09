@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
+import { Card, Row, Col, Image, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -34,15 +30,15 @@ const PostItem = ({
 
   return (
     <Card className='shadow-sm mb-3 p-3 post-item-container'>
-      <Row className='mt-3'>
-        <Col xs={2}>
+      <Row className='mt-3' className="post-top">
+        <Col xs={1} className="post-avatar">
           <Link to={`/profile/${user}`}>
             <Image roundedCircle src={avatar} />
           </Link>
         </Col>
-        <Col xs={10}>
-          <Link to={`/profile/${user}`}>{name}</Link> <br />
-          <Moment format='YYYY/MM/DD'>{date}</Moment>
+        <Col xs={11} className="post-info">
+          <Link className="post-name" to={`/profile/${user}`}>{name}</Link> <br />
+          <Moment className="post-date" format='YYYY/MM/DD'>{date}</Moment>
         </Col>
         {user === auth.user._id && (
           <i
@@ -51,12 +47,12 @@ const PostItem = ({
           ></i>
         )}
       </Row>
-      <Row className='mt-3'>
+      <Row className='mt-3' className="post-body">
         <Col>
           <p>{text}</p>
         </Col>
       </Row>
-      <Row className='mt-3'>
+      <Row className='mt-3' className="post-body">
         {photos.length > 0 &&
           photos.map((photo, i) => (
             <Col sm={4} key={i}>
@@ -67,7 +63,7 @@ const PostItem = ({
             </Col>
           ))}
       </Row>
-      <Row className='mt-3'>
+      <Row className='mt-3' className="post-action-summary">
         <Col className='d-flex align-items-center'>
           {/* like and comment rendering */}
           <div className='border-right pr-3'>
@@ -106,11 +102,10 @@ const PostItem = ({
             }}
           >
             <i
-              className={`fas fa-thumbs-up ${
-                likes.filter((like) => like.user === auth.user._id).length > 0
-                  ? 'active'
-                  : ''
-              }`}
+              className={`fas fa-thumbs-up ${likes.filter((like) => like.user === auth.user._id).length > 0
+                ? 'active'
+                : ''
+                }`}
             ></i>{' '}
             Like
           </div>

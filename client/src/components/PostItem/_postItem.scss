@@ -1,8 +1,45 @@
+@import "../../styles/variables";
+
 .post-item-container {
-  .fa-trash-alt {
-    position: absolute;
-    right: 1rem;
-    cursor: pointer;
+  padding: 2rem !important;
+
+  .post-top {
+    .post-avatar {
+      img {
+        width: 3rem;
+        height: 3rem;
+        // border-radius: 50%;
+        // border: 1px solid rgb(202, 202, 202);
+        object-fit: cover;
+      }
+    }
+
+    .post-info {
+      padding-left: 2rem;
+    }
+
+    .fa-trash-alt {
+      position: absolute;
+      right: 3rem;
+      cursor: pointer;
+    }
+
+    .post-name {
+      font-weight: 500;
+    }
+
+    .post-date {
+      font-size: 0.8rem;
+      color: #8d8d8d;
+    }
+  }
+
+  .post-body {
+    padding: 2rem 0;
+    p {
+      color: $paragraph-text;
+      line-height: 1.8rem;
+    }
   }
 
   .post-cta--container {
