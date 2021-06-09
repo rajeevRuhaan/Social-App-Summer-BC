@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import { addPost } from '../../redux/actions/post';
 
@@ -50,7 +49,17 @@ const CreatePostBox = () => {
       <Row>
         <Col xs={2}>
           <Link to={`/profile/${_id}`}>
-            <Image roundedCircle src={avatar} />
+            <div
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+              }}
+            />
           </Link>
         </Col>
         <Col xs={10}>

@@ -106,9 +106,9 @@ const PersonalInfoForm = () => {
         />
       </Form.Group>
       <Form.Group controlId='formFile' className='form-section'>
-        <Form.Label>Upload or Update An Avatar</Form.Label>
+        <Form.Label>Upload or Update An Profile Banner</Form.Label>
         <Form.Control type='file' name='avatar' onChange={handlePhoto} />
-        {profile && (
+        {profile && profile.avatar && (
           <Image
             width='80px'
             src={`${process.env.PUBLIC_URL}/assets/images/posts/${profile.avatar}`}

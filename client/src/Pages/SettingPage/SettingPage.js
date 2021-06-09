@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment } from 'react';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,11 +10,9 @@ import CustomNavbar from '../../components/Navbar/Navbar';
 import PersonalInfoForm from '../../components/SettingForm/PersonalInfoForm';
 import EducationForm from '../../components/SettingForm/EducationForm';
 import ExperienceForm from '../../components/SettingForm/ExperienceForm';
+import AcccountForm from '../../components/SettingForm/AccountForm';
 
 const Setting = () => {
-  const dispatch = useDispatch();
-  const profile = useSelector((state) => state.profile);
-
   return (
     <Fragment>
       <CustomNavbar />
@@ -36,6 +34,9 @@ const Setting = () => {
                     <Nav.Item>
                       <Nav.Link eventKey='experience'>Experience</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey='account'>Account Details</Nav.Link>
+                    </Nav.Item>
                   </Nav>
                 </div>
               </Col>
@@ -49,6 +50,9 @@ const Setting = () => {
                   </Tab.Pane>
                   <Tab.Pane eventKey='experience'>
                     <ExperienceForm />
+                  </Tab.Pane>
+                  <Tab.Pane eventKey='account'>
+                    <AcccountForm />
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

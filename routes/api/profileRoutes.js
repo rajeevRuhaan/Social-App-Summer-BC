@@ -67,7 +67,6 @@ router.post('/', [auth, uploadAvatar], async (req, res) => {
 
   //get avatar
   if (req.file) {
-    console.log('from req.file', req.file);
     profileFields.avatar = req.file.filename;
   }
 

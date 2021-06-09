@@ -1,6 +1,5 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -41,17 +40,12 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
-      //2)) Get users gravatar
-      const avatar = gravatar.url(email, {
-        s: '50',
-        r: 'pg',
-        d: 'mm',
-      });
+
       //create new user
       user = new User({
         name,
         email,
-        avatar,
+
         password,
       });
 

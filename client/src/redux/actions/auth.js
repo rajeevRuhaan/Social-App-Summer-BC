@@ -9,6 +9,7 @@ import {
 } from './profile';
 import {
   LOAD_USER,
+  UPDATE_USER,
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
@@ -107,6 +108,21 @@ export const register = (formData) => async (dispatch) => {
     dispatch({
       type: REGISTER_FAIL,
     });
+  }
+};
+
+//update user account
+export const updateUserAccount = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.put('/api/auth', formData, config);
+    dispatch({ type: UPDATE_USER, payload: res.data });
+  } catch (error) {
+    dispatch({ type: AUTH_ERROR });
   }
 };
 
