@@ -27,7 +27,7 @@ const PostItem = ({
   comments,
   date,
   toggleComments,
-  photo,
+  photos,
 }) => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -57,14 +57,15 @@ const PostItem = ({
         </Col>
       </Row>
       <Row className='mt-3'>
-        <Col>
-          {photo && (
-            <Image
-              fluid
-              src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
-            />
-          )}
-        </Col>
+        {photos.length > 0 &&
+          photos.map((photo, i) => (
+            <Col sm={4} key={i}>
+              <Image
+                fluid
+                src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
+              />
+            </Col>
+          ))}
       </Row>
       <Row className='mt-3'>
         <Col className='d-flex align-items-center'>

@@ -48,7 +48,7 @@ const PostSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  photo: String,
+  photos: [String],
   date: {
     type: Date,
     default: Date.now,

@@ -107,11 +107,13 @@ const AboutMe = ({
             <small>Enter Your Skills</small>
           </Col>
         ) : (
-          skills.map((skill, i) => (
-            <Col key={i}>
-              <i className='far fa-check-square'>{skill}</i>
-            </Col>
-          ))
+          <Col>
+            {skills.map((skill, i) => (
+              <span key={i} className='skill'>
+                {skill}
+              </span>
+            ))}
+          </Col>
         )}
       </Row>
       {profile.repos.length > 0 && (

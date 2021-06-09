@@ -32,7 +32,7 @@ const CustomNavbar = () => {
             <IndexLinkContainer to='/'>
               <Nav.Link>Home</Nav.Link>
             </IndexLinkContainer>
-            <LinkContainer to={`/profile/${auth.user._id}`}>
+            <LinkContainer to={`/profile/${auth.user && auth.user._id}`}>
               <Nav.Link>Profile</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/setting'>

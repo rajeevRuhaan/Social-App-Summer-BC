@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator');
 
 const Post = require('../../models/Post');
 const User = require('../../models/User');
-const Profie = require('../../models/Profile');
 const auth = require('../../middlewares/auth');
 const { uploadPostImages } = require('../../middlewares/uploadPhotos');
 
@@ -26,14 +25,15 @@ router.post('/', [auth, uploadPostImages], async (req, res) => {
       user: req.user.id,
     };
 
+    newPost.photos = [];
+
     //handle upload file
-    if (req.file) {
-      newPost.photo = req.file.filename;
+    if (req.files) {
+      req.files.map((photo) => newPost.photos.push(photo.filename));
     }
 
     const post = new Post(newPost);
-    console.log('new post', newPost);
-    console.log('post', post);
+
     await post.save();
     res.json(post);
   } catch (error) {
