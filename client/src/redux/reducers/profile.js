@@ -7,10 +7,12 @@ import {
   GET_PROFILE_BY_ID,
   GET_REPOS,
   PROFILE_ERROR,
+  GET_PROFILES,
 } from '../actions/types';
 
 const initialState = {
   profile: null,
+  profiles: null,
   profileById: null,
   repos: [],
   loading: true,
@@ -21,6 +23,13 @@ const profileReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_PROFILES:
+      return {
+        ...state,
+        profiles: payload,
+        loading: false,
+      };
+
     case ADD_PROFILE:
     case GET_PROFILE:
     case ADD_EXPERIENCE:

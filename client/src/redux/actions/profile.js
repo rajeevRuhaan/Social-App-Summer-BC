@@ -5,11 +5,29 @@ import {
   CLEAR_PROFILE_BY_ID,
   ADD_EXPERIENCE,
   GET_PROFILE,
+  GET_PROFILES,
   GET_PROFILE_BY_ID,
   GET_REPOS,
   PROFILE_ERROR,
   ADD_PROFILE,
 } from './types';
+
+//get all users
+export const getAllProfiles = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/profile');
+
+    dispatch({ type: GET_PROFILES, payload: res.data });
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
 
 //get current user profile
 export const getCurrentProfile = () => async (dispatch) => {
