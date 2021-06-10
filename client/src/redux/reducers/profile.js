@@ -8,6 +8,7 @@ import {
   GET_REPOS,
   PROFILE_ERROR,
   GET_PROFILES,
+  ADD_EDUCATION,
 } from '../actions/types';
 
 const initialState = {
@@ -33,6 +34,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_PROFILE:
     case GET_PROFILE:
     case ADD_EXPERIENCE:
+    case ADD_EDUCATION:
       return {
         ...state,
         profile: payload,

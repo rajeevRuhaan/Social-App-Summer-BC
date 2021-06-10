@@ -9,7 +9,16 @@ const Alert = () => {
       {alerts.length > 0 ? (
         <Fragment>
           {alerts.map((alert) => (
-            <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+            <div
+              key={alert.id}
+              className={`alert alert-${alert.alertType}`}
+              role='alert'
+              style={{
+                color: `$color-${alert.alertType}`,
+                border: `1px solid $color-${alert.alertType}`,
+                backgroundColor: `$background-color-${alert.alertType}`,
+              }}
+            >
               {alert.msg}
             </div>
           ))}

@@ -39,8 +39,7 @@ const ExperienceForm = () => {
       to: '',
       description: '',
     });
-    //open To date box
-    setToDisabled(true);
+    setToDisabled(false);
   };
 
   return (

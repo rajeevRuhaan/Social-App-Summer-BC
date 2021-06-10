@@ -27,9 +27,11 @@ const AllUsers = ({ profiles }) => {
             </Col>
             <Col sm={8}>
               <Link to={`/profile/${profile.user._id}`}>
-                <Card.Title>{profile.user.name}</Card.Title>
+                <h6>{profile.user.name}</h6>
               </Link>
-              <p className='text-muted'>{profile.status || 'updating'}</p>
+              <small className='text-muted'>
+                {profile.status || 'updating'}
+              </small>
             </Col>
           </Row>
         ))}

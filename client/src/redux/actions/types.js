@@ -15,6 +15,7 @@ export const GET_PROFILES = 'GET_PROFILES';
 export const ADD_PROFILE = 'ADD_PROFILE';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const ADD_EXPERIENCE = 'ADD_EXPERIENCE';
+export const ADD_EDUCATION = 'ADD_EDUCATION';
 export const GET_PROFILE_BY_ID = 'GET_PROFILE_BY_ID';
 export const CLEAR_PROFILE_BY_ID = 'CLEAR_PROFILE_BY_ID';
 export const GET_REPOS = 'GET_REPOS';

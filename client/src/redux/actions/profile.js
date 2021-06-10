@@ -10,6 +10,7 @@ import {
   GET_REPOS,
   PROFILE_ERROR,
   ADD_PROFILE,
+  ADD_EDUCATION,
 } from './types';
 
 //get all users
@@ -113,6 +114,36 @@ export const createExperience = (formData) => async (dispatch) => {
     //fetch current user profile
     dispatch({
       type: ADD_EXPERIENCE,
+      payload: res.data,
+    });
+
+    //set alert
+    dispatch(setAlert('Profile updated', 'success'));
+  } catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//Create experience
+export const createEducation = (formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.put('/api/profile/education', formData, config);
+
+    //fetch current user profile
+    dispatch({
+      type: ADD_EDUCATION,
       payload: res.data,
     });
 

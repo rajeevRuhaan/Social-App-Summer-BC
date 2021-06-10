@@ -1,9 +1,35 @@
 .alert {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
   text-align: center;
-  color: $color-error;
-  background-color: #fff3f3;
   width: 20rem;
   margin: 2rem auto;
   padding: 2rem 0;
-  border: 1px solid $color-error;
+  -webkit-animation: alertAnimation 0.5s ease-in-out;
+  animation: alertAnimation 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+@-webkit-keyframes alertAnimation {
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 50%;
+  }
+}
+
+@keyframes alertAnimation {
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 50%;
+  }
 }

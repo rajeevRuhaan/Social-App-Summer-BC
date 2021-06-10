@@ -66,9 +66,10 @@ const PostItem = ({
           <p>{text}</p>
         </Col>
       </Row>
-      <Row className='mt-3'>
-        {photos.length > 0 &&
-          photos.map((photo, i) => (
+      {/* Render post images */}
+      {photos.length > 0 && (
+        <Row>
+          {photos.map((photo, i) => (
             <Col sm={4} key={i}>
               <Image
                 fluid
@@ -76,7 +77,9 @@ const PostItem = ({
               />
             </Col>
           ))}
-      </Row>
+        </Row>
+      )}
+
       <Row className='mt-3'>
         <Col className='d-flex align-items-center'>
           {/* like and comment rendering */}
