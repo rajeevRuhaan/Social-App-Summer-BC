@@ -4,6 +4,7 @@
   padding: 2rem !important;
 
   .post-top {
+    margin-bottom: 1rem;
     .post-avatar {
       img {
         width: 3rem;
@@ -34,15 +35,50 @@
     }
   }
 
-  .post-body {
-    padding: 2rem 0;
+  .post-body-text {
+    padding: 1rem 0;
     p {
       color: $paragraph-text;
       line-height: 1.8rem;
+      margin-bottom: 0;
     }
   }
 
+  .post-body-image {
+    padding-bottom: 1rem;
+    .post-gallery {
+      display: flex;
+      flex-flow: row wrap;
+      align-content: flex-start;
+      align-items: stretch;
+      width: 100%;
+      margin: auto;
+
+      .post-gallery-item {
+        height: 300px;
+        flex: 1 1 auto;
+        margin: 0.3em;
+        position: relative;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: auto;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .post-action-summary {
+    font-size: 0.85rem;
+    padding: 1rem 0;
+    color: rgba(102, 102, 102, 0.75);
+  }
+
   .post-cta--container {
+    color: $paragraph-text;
+    padding-top: 1rem;
+
     .post-cta--item {
       cursor: pointer;
 

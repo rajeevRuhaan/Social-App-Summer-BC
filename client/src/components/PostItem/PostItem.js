@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { Card, Row, Col, Image, Container } from 'react-bootstrap';
+import { Card, Image, Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { useDispatch, useSelector } from 'react-redux';
+
 
 import {
   addLike,
@@ -47,21 +50,23 @@ const PostItem = ({
           ></i>
         )}
       </Row>
-      <Row className='mt-3' className="post-body">
+      <Row className='mt-3' className="post-body-text">
         <Col>
           <p>{text}</p>
         </Col>
       </Row>
 
       {photos.length > 0 &&
-        <Row className='mt-3' className="post-body">
+        <Row className='mt-3' className="post-body-image">
           {
             photos.map((photo, i) => (
-              <Col sm={4} key={i}>
+              <Col key={i} className="post-gallery">
+                <div className="post-gallery-item">
                 <Image
                   fluid
                   src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
                 />
+                </div>
               </Col>
             ))
           }
@@ -87,7 +92,7 @@ const PostItem = ({
       </Row>
       <Row className='mt-3'>
         <Col>
-          <div className='border-top w-100'></div>
+          <div className='border-top w-100 post-cta-divider'></div>
         </Col>
       </Row>
       <Row className='post-cta--container mt-3'>

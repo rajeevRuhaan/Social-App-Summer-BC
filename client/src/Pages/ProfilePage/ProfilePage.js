@@ -7,10 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Spinner from '../../components/Spinner/Spinner';
 import CustomNavbar from '../../components/Navbar/Navbar';
 import ProfileBanner from '../../components/ProfileBanner/ProfileBanner';
-import {
-  getUserProfileById,
-  clearUserProfileById,
-} from '../../redux/actions/profile';
+import { getUserProfileById, clearUserProfileById } from '../../redux/actions/profile';
 import UserBox from '../../components/UserBox/UserBox';
 import CreatePostBox from '../../components/CreatPostBox/CreatePostBox';
 import Posts from '../../components/Posts/Posts';
