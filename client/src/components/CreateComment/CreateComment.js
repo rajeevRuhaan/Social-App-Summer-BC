@@ -15,8 +15,8 @@ const CreateComment = ({ postId }) => {
   const dispatch = useDispatch();
 
   return (
-    <Row>
-      <Col xs={2}>
+    <Row className='create-comment'>
+      <Col xs={1} className='create-comment-avatar'>
         <div
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
@@ -29,7 +29,7 @@ const CreateComment = ({ postId }) => {
           }}
         />
       </Col>
-      <Col xs={10}>
+      <Col xs={11} className='create-comment-input'>
         <Formik
           initialValues={{ text: '' }}
           validationSchema={Yup.object({
@@ -50,7 +50,6 @@ const CreateComment = ({ postId }) => {
               type='text'
               className='form-control'
               placeholder='Write a comment...'
-              as='textarea'
             />
           </Form>
         </Formik>

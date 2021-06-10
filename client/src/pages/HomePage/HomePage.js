@@ -1,8 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { useDispatch, useSelector } from 'react-redux';
-
 import CustomNavbar from '../../components/Navbar/Navbar';
 import Spinner from '../../components/Spinner/Spinner';
 import UserBox from '../../components/UserBox/UserBox';
@@ -11,7 +8,9 @@ import Posts from '../../components/Posts/Posts';
 import { getAllProfiles, getCurrentProfile } from '../../redux/actions/profile';
 import { getCurrentUserPosts, getPosts } from '../../redux/actions/post';
 import AllUsers from '../../components/AllUsers/AllUsers';
-import PhotoGallery from '../../components/Gallery/Gallery';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -35,24 +34,22 @@ const HomePage = () => {
   return auth.user && post.posts && profile.profile && profile.profiles ? (
     <Fragment>
       <CustomNavbar />
-      <section className='homepage-content'>
-        <Row className='px-5'>
-          <Col xs={3}>
+      <Container className='homepage-content'>
+        <Row>
+          <Col xs={4} className='left-sidebar'>
             <UserBox
               user={auth.user}
               profile={profile.profile}
               posts={post.currentUserPosts}
             />
+            <AllUsers profiles={profile.profiles} />
           </Col>
-          <Col xs={6}>
+          <Col xs={8}>
             <CreatePostBox />
             <Posts posts={post.posts} />
           </Col>
-          <Col>
-            <AllUsers profiles={profile.profiles} />
-          </Col>
         </Row>
-      </section>
+      </Container>
     </Fragment>
   ) : (
     <Spinner />

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import Card from 'react-bootstrap/Card';
+import { Card, Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -35,8 +33,8 @@ const PostItem = ({
 
   return (
     <Card className='shadow-sm mb-3 p-3 post-item-container'>
-      <Row className='mt-3'>
-        <Col xs={2}>
+      <Row className='post-top'>
+        <Col xs={1} className='post-avatar'>
           <Link to={`/profile/${user}`}>
             <div
               style={{
@@ -51,9 +49,14 @@ const PostItem = ({
             />
           </Link>
         </Col>
-        <Col xs={10}>
-          <Link to={`/profile/${user}`}>{name}</Link> <br />
-          <Moment format='YYYY/MM/DD'>{date}</Moment>
+        <Col xs={11} className='post-info'>
+          <Link className='post-name' to={`/profile/${user}`}>
+            {name}
+          </Link>{' '}
+          <br />
+          <Moment className='post-date' format='YYYY/MM/DD'>
+            {date}
+          </Moment>
         </Col>
         {user === auth.user._id && (
           <i
@@ -62,7 +65,7 @@ const PostItem = ({
           ></i>
         )}
       </Row>
-      <Row className='mt-3'>
+      <Row className='post-body-text'>
         <Col>
           <p>{text}</p>
         </Col>
@@ -85,11 +88,6 @@ const PostItem = ({
             {comments.length > 0 ? `${comments.length} Comments` : `Comment`}
           </div>
           <div className='pl-3'>Share</div>
-        </Col>
-      </Row>
-      <Row className='mt-3'>
-        <Col>
-          <div className='border-top w-100'></div>
         </Col>
       </Row>
       <Row className='post-cta--container mt-3'>
@@ -129,10 +127,13 @@ const PostItem = ({
           </div>
         </Col>
       </Row>
-      <Row className='mt-3'>
-        <Col>
+      <Row className='section-divider'>
+        <div className='border-top w-100 post-cta-divider'></div>
+      </Row>
+      <Row className='comment-area'>
+        <Col className='comment-box'>
           {toggleComments ? (
-            <Container>
+            <Container className='comment-box-input'>
               <CreateComment postId={_id} user={user} />
               <Comments comments={comments} />
             </Container>

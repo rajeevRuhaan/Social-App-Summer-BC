@@ -15,40 +15,40 @@ const PhotoGallery = ({ photos }) => {
   };
 
   return (
-    <section id='gallery' className='py-5'>
-      <Container>
-        <Row className='mb-4'>
-          {photos.map((photo, index) => (
-            <Col key={index} md='4'>
+    <Container>
+      <Row className='mt-3 post-body-image'>
+        {photos.map((photo, index) => (
+          <Col key={index} className='post-gallery'>
+            <div className='post-gallery-item'>
               <img
                 src={`${process.env.PUBLIC_URL}/assets/images/posts/${photos[index]}`}
                 className='img-fluid gallery-img'
                 alt='random'
                 onClick={() => handleImageClick(index)}
               />
-            </Col>
-          ))}
-        </Row>
-        {isOpen && (
-          <Lightbox
-            mainSrc={`${process.env.PUBLIC_URL}/assets/images/posts/${photos[photoIndex]}`}
-            nextSrc={`${process.env.PUBLIC_URL}/assets/images/posts/${
-              photos[(photoIndex + 1) % photos.length]
-            }`}
-            prevSrc={`${process.env.PUBLIC_URL}/assets/images/posts/${
-              photos[(photoIndex + photos.length - 1) % photos.length]
-            }`}
-            onCloseRequest={() => setIsOpen(false)}
-            onMovePrevRequest={() =>
-              setPhotoIndex((photoIndex + photos.length - 1) % photos.length)
-            }
-            onMoveNextRequest={() =>
-              setPhotoIndex((photoIndex + 1) % photos.length)
-            }
-          />
-        )}
-      </Container>
-    </section>
+            </div>
+          </Col>
+        ))}
+      </Row>
+      {isOpen && (
+        <Lightbox
+          mainSrc={`${process.env.PUBLIC_URL}/assets/images/posts/${photos[photoIndex]}`}
+          nextSrc={`${process.env.PUBLIC_URL}/assets/images/posts/${
+            photos[(photoIndex + 1) % photos.length]
+          }`}
+          prevSrc={`${process.env.PUBLIC_URL}/assets/images/posts/${
+            photos[(photoIndex + photos.length - 1) % photos.length]
+          }`}
+          onCloseRequest={() => setIsOpen(false)}
+          onMovePrevRequest={() =>
+            setPhotoIndex((photoIndex + photos.length - 1) % photos.length)
+          }
+          onMoveNextRequest={() =>
+            setPhotoIndex((photoIndex + 1) % photos.length)
+          }
+        />
+      )}
+    </Container>
   );
 };
 

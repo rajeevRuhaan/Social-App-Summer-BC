@@ -17,6 +17,7 @@ const Setting = () => {
   return (
     <Fragment>
       <CustomNavbar />
+
       <Container className='setting-area'>
         <Alert />
         <Row className='px-5'>

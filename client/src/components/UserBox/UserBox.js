@@ -4,7 +4,6 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-
 import measureProgress from '../../redux/utils/measureProgress';
 
 const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
@@ -25,67 +24,75 @@ const UserBox = ({ user = {}, profile = {}, posts = [] }) => {
   const { name, avatar, _id } = user;
 
   return (
-    <Card className='shadow-sm p-3'>
-      <Row>
-        <Col sm={4}>
-          <Link to={`/profile/${_id}`}>
-            <div
-              style={{
-                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                width: '60px',
-                height: '60px',
-                borderRadius: '50%',
-              }}
-            />
-          </Link>
-        </Col>
-        <Col sm={8}>
-          <Link to={`/profile/${_id}`}>
-            <Card.Title>{name}</Card.Title>
-          </Link>
-          <p className='text-muted'>{status}</p>
-        </Col>
-      </Row>
-      <p>
-        Profile Ready:{' '}
-        <span>
-          {measureProgress([
-            status,
-            social,
-            skills,
-            company,
-            website,
-            location,
-            bio,
-            githubusername,
-            experience,
-            education,
-          ])}
+    <Card className='shadow-sm p-3 mb-3 user-box'>
+      <Link to={`/profile/${_id}`}>
+        <Card className="user-box-section profile-card">
+          <Row>
+            <Col sm={3}>
+              <div
+                style={{
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${avatar})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                }}
+              >
+              </div>
+            </Col>
+            <Col sm={9}>
+              <Card.Title>{name}</Card.Title>
+              <Card.Text className='text-muted'>{status}</Card.Text>
+            </Col>
+          </Row>
+        </Card>
+      </Link>
+      <Link to='/setting'>
+        <div className="user-box-section profile-progress">
+          <Card.Text>
+            Profile Ready:{' '}
+            <span>
+              {measureProgress([
+                status,
+                social,
+                skills,
+                company,
+                website,
+                location,
+                bio,
+                githubusername,
+                experience,
+                education,
+              ])}
           %
         </span>{' '}
-      </p>
-      <ProgressBar
-        variant='success'
-        now={measureProgress([
-          status,
-          social,
-          skills,
-          company,
-          website,
-          location,
-          bio,
-          githubusername,
-          experience,
-          education,
-        ])}
-      />
-
-      <p>
-        Total Posts: <span>{posts.length}</span>{' '}
-      </p>
+          </Card.Text>
+          <ProgressBar
+            variant='success'
+            now={measureProgress([
+              status,
+              social,
+              skills,
+              company,
+              website,
+              location,
+              bio,
+              githubusername,
+              experience,
+              education,
+            ])}
+          />
+          {/* <Button variant="link">Complete Your Profile</Button> */}
+        </div>
+      </Link>
+      {/* <hr /> */}
+      <Link to={`/profile/${_id}`}>
+        <div className="user-box-section">
+          <Card.Text>Total Posts: <span>{posts.length}</span>{' '}</Card.Text>
+        </div>
+      </Link>
     </Card>
   );
 };
