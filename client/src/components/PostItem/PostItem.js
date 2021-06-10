@@ -16,6 +16,7 @@ import {
 } from '../../redux/actions/post';
 import CreateComment from '../CreateComment/CreateComment';
 import Comments from '../Comments/Comments';
+import PhotoGallery from '../Gallery/Gallery';
 
 const PostItem = ({
   _id,
@@ -67,18 +68,7 @@ const PostItem = ({
         </Col>
       </Row>
       {/* Render post images */}
-      {photos.length > 0 && (
-        <Row>
-          {photos.map((photo, i) => (
-            <Col sm={4} key={i}>
-              <Image
-                fluid
-                src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
-              />
-            </Col>
-          ))}
-        </Row>
-      )}
+      {photos.length > 0 && <PhotoGallery photos={photos} />}
 
       <Row className='mt-3'>
         <Col className='d-flex align-items-center'>

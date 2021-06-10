@@ -50,6 +50,7 @@ const CreateComment = ({ postId }) => {
               type='text'
               className='form-control'
               placeholder='Write a comment...'
+              as='textarea'
             />
           </Form>
         </Formik>

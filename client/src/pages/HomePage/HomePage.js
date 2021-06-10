@@ -11,6 +11,7 @@ import Posts from '../../components/Posts/Posts';
 import { getAllProfiles, getCurrentProfile } from '../../redux/actions/profile';
 import { getCurrentUserPosts, getPosts } from '../../redux/actions/post';
 import AllUsers from '../../components/AllUsers/AllUsers';
+import PhotoGallery from '../../components/Gallery/Gallery';
 
 const HomePage = () => {
   const dispatch = useDispatch();
