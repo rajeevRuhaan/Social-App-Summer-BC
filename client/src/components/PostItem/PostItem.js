@@ -62,10 +62,10 @@ const PostItem = ({
             photos.map((photo, i) => (
               <Col key={i} className="post-gallery">
                 <div className="post-gallery-item">
-                <Image
-                  fluid
-                  src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
-                />
+                  <Image
+                    fluid
+                    src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
+                  />
                 </div>
               </Col>
             ))
@@ -88,11 +88,6 @@ const PostItem = ({
             {comments.length > 0 ? `${comments.length} Comments` : `Comment`}
           </div>
           <div className='pl-3'>Share</div>
-        </Col>
-      </Row>
-      <Row className='mt-3'>
-        <Col>
-          <div className='border-top w-100 post-cta-divider'></div>
         </Col>
       </Row>
       <Row className='post-cta--container mt-3'>
@@ -131,14 +126,18 @@ const PostItem = ({
           </div>
         </Col>
       </Row>
-      <Row className='mt-3'>
-        <Col>
+      <Row className="section-divider">
+        <div className='border-top w-100 post-cta-divider'></div>
+      </Row>
+      <Row className='comment-area'>
+        <Col className="comment-box">
           {toggleComments ? (
-            <Container>
+            <Container className="comment-box-input">
               <CreateComment postId={_id} user={user} />
               <Comments comments={comments} />
             </Container>
           ) : null}
+
         </Col>
       </Row>
     </Card>

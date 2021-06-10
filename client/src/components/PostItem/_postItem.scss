@@ -70,6 +70,7 @@
   }
 
   .post-action-summary {
+    justify-content: space-between;
     font-size: 0.85rem;
     padding: 1rem 0;
     color: rgba(102, 102, 102, 0.75);
@@ -77,13 +78,31 @@
 
   .post-cta--container {
     color: $paragraph-text;
-    padding-top: 1rem;
+    padding: 1rem 0;
+    background-color: #fafafa;
 
     .post-cta--item {
       cursor: pointer;
 
       .active {
         color: $primary-color;
+      }
+    }
+  }
+  .section-divider {
+    .col {
+      margin: 0 !important;
+    }
+  }
+  .comment-area {
+    margin-top: 0 !important;
+    .comment-box {
+      width: 100%;
+      padding: 0;
+
+      .comment-box-input {
+        padding: 1rem;
+        background-color: rgb(250, 250, 250);
       }
     }
   }

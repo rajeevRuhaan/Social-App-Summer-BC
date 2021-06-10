@@ -15,11 +15,11 @@ const CreateComment = ({ postId }) => {
   const dispatch = useDispatch();
 
   return (
-    <Row>
-      <Col xs={2}>
+    <Row className="create-comment">
+      <Col xs={1} className="create-comment-avatar">
         <Image roundedCircle src={avatar} />
       </Col>
-      <Col xs={10}>
+      <Col xs={11} className="create-comment-input">
         <Formik
           initialValues={{ text: '' }}
           validationSchema={Yup.object({
