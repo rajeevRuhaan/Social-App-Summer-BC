@@ -45,9 +45,9 @@ const CreatePostBox = () => {
   };
 
   return (
-    <Card className='shadow-sm p-3 mb-3'>
+    <Card className='shadow-sm p-3 mb-3 create-post-box'>
       <Row>
-        <Col xs={2}>
+        <Col xs={2} className="post-avatar">
           <Link to={`/profile/${_id}`}>
             <div
               style={{
@@ -72,7 +72,7 @@ const CreatePostBox = () => {
               value={newPost.text}
               onChange={handleChange}
             />
-            <div className='d-flex justify-content-between mt-3'>
+            <div className='d-flex justify-content-between mt-3 create-post-bottom'>
               <label className='photo-input--post'>
                 <input
                   type='file'
@@ -83,7 +83,7 @@ const CreatePostBox = () => {
                 />
                 <i className='fas fa-image'></i> Photos
               </label>
-              <Button type='submit'>Post</Button>
+              <Button type='submit'>Create Post</Button>
             </div>
           </form>
         </Col>

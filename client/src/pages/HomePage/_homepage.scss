@@ -1,3 +1,39 @@
+@import "../../styles/variables";
+
 .homepage-content {
   margin-top: 6rem;
+
+  .left-sidebar {
+    // height: 90vh;
+    // overflow: hidden;
+
+    .single-user-profile {
+      height: inherit;
+      background-color: #f5f5f5;
+      border: none;
+
+      a {
+        text-decoration: none;
+        color: $secondary-color-1;
+
+        .user-profile-card {
+          padding: 1rem;
+          margin-bottom: 0.5rem;
+          border: none;
+          background-color: #fafafa;
+
+          .user-avatar {
+            display: flex;
+            justify-content: center;
+          }
+          .user-info {
+            padding: 0 1rem 0 0;
+            p {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
 }

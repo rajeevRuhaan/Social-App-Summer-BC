@@ -7,31 +7,31 @@ import Row from 'react-bootstrap/esm/Row';
 const AllUsers = ({ profiles }) => {
   return (
     <Fragment>
-      <Card className='p-3'>
+      <Card className='p-3 mb-3 single-user-profile'>
         {profiles.map((profile) => (
-          <Row key={profile._id}>
-            <Col sm={4}>
-              <Link to={`/profile/${profile.user._id}`}>
-                <div
-                  style={{
-                    backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${profile.user.avatar})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                  }}
-                />
-              </Link>
-            </Col>
-            <Col sm={8}>
-              <Link to={`/profile/${profile.user._id}`}>
-                <Card.Title>{profile.user.name}</Card.Title>
-              </Link>
-              <p className='text-muted'>{profile.status || 'updating'}</p>
-            </Col>
-          </Row>
+          <Link to={`/profile/${profile.user._id}`}>
+            <Card className="user-profile-card">
+              <Row key={profile._id}>
+                <Col sm={3} className="user-avatar">
+                  <div
+                    style={{
+                      backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/posts/${profile.user.avatar})`,
+                      backgroundPosition: 'center',
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                    }}
+                  />
+                </Col>
+                <Col sm={9} className="user-info">
+                  <Card.Title>{profile.user.name}</Card.Title>
+                  <p className='text-muted'>{profile.status || 'updating'}</p>
+                </Col>
+              </Row>
+            </Card>
+          </Link>
         ))}
       </Card>
     </Fragment>

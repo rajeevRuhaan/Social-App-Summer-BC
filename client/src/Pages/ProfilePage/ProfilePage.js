@@ -7,15 +7,13 @@ import Col from 'react-bootstrap/Col';
 import Spinner from '../../components/Spinner/Spinner';
 import CustomNavbar from '../../components/Navbar/Navbar';
 import ProfileBanner from '../../components/ProfileBanner/ProfileBanner';
-import {
-  getUserProfileById,
-  clearUserProfileById,
-} from '../../redux/actions/profile';
+import { getUserProfileById, clearUserProfileById } from '../../redux/actions/profile';
 import UserBox from '../../components/UserBox/UserBox';
 import CreatePostBox from '../../components/CreatPostBox/CreatePostBox';
 import Posts from '../../components/Posts/Posts';
 import { getCurrentUserPosts } from '../../redux/actions/post';
 import AboutMe from '../../components/AboutMe/AboutMe';
+import { Container } from 'react-bootstrap';
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -43,12 +41,12 @@ const ProfilePage = () => {
     <Fragment>
       <CustomNavbar />
       <ProfileBanner />
-      <section className='profilepage-content'>
+      <Container className='profilepage-content'>
         <div className='text-center mb-3'>
           <h4>{profileById.user.name}</h4>
           <span>{profileById.status}</span>
         </div>
-        <Row className='px-5'>
+        <Row>
           <Col xs={4}>
             <UserBox
               user={profileById.user}
@@ -62,7 +60,7 @@ const ProfilePage = () => {
             <Posts posts={currentUserPosts} />
           </Col>
         </Row>
-      </section>
+      </Container>
     </Fragment>
   ) : (
     <Spinner />

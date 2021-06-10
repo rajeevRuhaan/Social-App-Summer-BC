@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import Card from 'react-bootstrap/Card';
+import { Card, Image, Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
 import { useDispatch, useSelector } from 'react-redux';
+
 
 import {
   addLike,
@@ -34,8 +33,8 @@ const PostItem = ({
 
   return (
     <Card className='shadow-sm mb-3 p-3 post-item-container'>
-      <Row className='mt-3'>
-        <Col xs={2}>
+      <Row className='mt-3' className="post-top">
+        <Col xs={1} className="post-avatar">
           <Link to={`/profile/${user}`}>
             <div
               style={{
@@ -50,9 +49,9 @@ const PostItem = ({
             />
           </Link>
         </Col>
-        <Col xs={10}>
-          <Link to={`/profile/${user}`}>{name}</Link> <br />
-          <Moment format='YYYY/MM/DD'>{date}</Moment>
+        <Col xs={11} className="post-info">
+          <Link className="post-name" to={`/profile/${user}`}>{name}</Link> <br />
+          <Moment className="post-date" format='YYYY/MM/DD'>{date}</Moment>
         </Col>
         {user === auth.user._id && (
           <i
@@ -61,23 +60,30 @@ const PostItem = ({
           ></i>
         )}
       </Row>
-      <Row className='mt-3'>
+      <Row className='mt-3' className="post-body-text">
         <Col>
           <p>{text}</p>
         </Col>
       </Row>
-      <Row className='mt-3'>
-        {photos.length > 0 &&
-          photos.map((photo, i) => (
-            <Col sm={4} key={i}>
-              <Image
-                fluid
-                src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
-              />
-            </Col>
-          ))}
-      </Row>
-      <Row className='mt-3'>
+
+      {photos.length > 0 &&
+        <Row className='mt-3' className="post-body-image">
+          {
+            photos.map((photo, i) => (
+              <Col key={i} className="post-gallery">
+                <div className="post-gallery-item">
+                  <Image
+                    fluid
+                    src={`${process.env.PUBLIC_URL}/assets/images/posts/${photo}`}
+                  />
+                </div>
+              </Col>
+            ))
+          }
+        </Row>
+      }
+
+      <Row className='mt-3' className="post-action-summary">
         <Col className='d-flex align-items-center'>
           {/* like and comment rendering */}
           <div className='border-right pr-3'>
@@ -92,11 +98,6 @@ const PostItem = ({
             {comments.length > 0 ? `${comments.length} Comments` : `Comment`}
           </div>
           <div className='pl-3'>Share</div>
-        </Col>
-      </Row>
-      <Row className='mt-3'>
-        <Col>
-          <div className='border-top w-100'></div>
         </Col>
       </Row>
       <Row className='post-cta--container mt-3'>
@@ -116,11 +117,10 @@ const PostItem = ({
             }}
           >
             <i
-              className={`fas fa-thumbs-up ${
-                likes.filter((like) => like.user === auth.user._id).length > 0
-                  ? 'active'
-                  : ''
-              }`}
+              className={`fas fa-thumbs-up ${likes.filter((like) => like.user === auth.user._id).length > 0
+                ? 'active'
+                : ''
+                }`}
             ></i>{' '}
             Like
           </div>
@@ -136,14 +136,18 @@ const PostItem = ({
           </div>
         </Col>
       </Row>
-      <Row className='mt-3'>
-        <Col>
+      <Row className="section-divider">
+        <div className='border-top w-100 post-cta-divider'></div>
+      </Row>
+      <Row className='comment-area'>
+        <Col className="comment-box">
           {toggleComments ? (
-            <Container>
+            <Container className="comment-box-input">
               <CreateComment postId={_id} user={user} />
               <Comments comments={comments} />
             </Container>
           ) : null}
+
         </Col>
       </Row>
     </Card>
